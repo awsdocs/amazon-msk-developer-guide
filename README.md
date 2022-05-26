@@ -1,11 +1,8 @@
-## My Project
+## Amazon MSK Developer Guide
 
-TODO: Fill this README out!
+The open source version of the Amazon MSK Developer Guide. To submit feedback or requests for changes, submit an issue or make changes and submit a pull request.
 
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+To view a list of topics in this guide, see the [index](doc_source/index.md).
 
 ## Security
 
