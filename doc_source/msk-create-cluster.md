@@ -79,7 +79,7 @@ Specify exactly two subnets if you are using one of the following Regions: South
 1. Run the following AWS CLI command in the directory where you saved the `brokernodegroupinfo.json` file, replacing *"Your\-Cluster\-Name"* with a name of your choice\. For *"Monitoring\-Level"*, you can specify one of the following three values: `DEFAULT`, `PER_BROKER`, or `PER_TOPIC_PER_BROKER`\. For information about these three different levels of monitoring, see [Monitoring an Amazon MSK Cluster](monitoring.md)\. The `enhanced-monitoring` parameter is optional\. If you don't specify it in the `create-cluster` command, you get the `DEFAULT` level of monitoring\.
 
    ```
-   aws kafka create-cluster --cluster-name "Your-Cluster-Name" --broker-node-group-info fileb://brokernodegroupinfo.json --kafka-version "2.2.1" --number-of-broker-nodes 3 --enhanced-monitoring "Monitoring-Level"
+   aws kafka create-cluster --cluster-name "Your-Cluster-Name" --broker-node-group-info file://brokernodegroupinfo.json --kafka-version "2.2.1" --number-of-broker-nodes 3 --enhanced-monitoring "Monitoring-Level"
    ```
 
    The output of the command looks like the following JSON:
@@ -114,7 +114,7 @@ For information about custom MSK configurations and how to create them, see [Ama
 1. Run the `create-cluster` command and use the `configuration-info` option to point to the JSON file you saved in the previous step\. The following is an example\.
 
    ```
-   aws kafka create-cluster --cluster-name ExampleClusterName --broker-node-group-info fileb://brokernodegroupinfo.json --kafka-version "1.1.1" --number-of-broker-nodes 3 --enhanced-monitoring PER_TOPIC_PER_BROKER --configuration-info file://configuration.json
+   aws kafka create-cluster --cluster-name ExampleClusterName --broker-node-group-info file://brokernodegroupinfo.json --kafka-version "1.1.1" --number-of-broker-nodes 3 --enhanced-monitoring PER_TOPIC_PER_BROKER --configuration-info file://configuration.json
    ```
 
    The following is an example of a successful response after running this command\.

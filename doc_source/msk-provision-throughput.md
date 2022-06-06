@@ -33,7 +33,9 @@ For information about the `VolumeReadBytes` and `VolumeWriteBytes` metrics, see 
 
 ## Configuration update<a name="provisioned-throughput-config"></a>
 
-When you turn on provisioned throughput for a cluster, you might not see the desired throughput unless you also update the value of the `num.replica.fetchers` configuration parameter\. In the default Amazon MSK configuration, that parameter has a value of 2\. To get the benefit of provisioned throughput, update your cluster's configuration by setting `num.replica.fetchers` to the value that matches the cluster's broker type in the following table\. The values in the table are general guidance\. We recommend that you adjust these values based on your use case\. You can update the configuration either before or after you turn on provisioned throughput\. However, you won't see the desired throughput until you perform both actions: update the configuration and turn on provisioned throughput\. 
+You can update your Amazon MSK configuration either before or after you turn on provisioned throughput\. However, you won't see the desired throughput until you perform both actions: update the `num.replica.fetchers` configuration parameter and turn on provisioned throughput\. 
+
+In the default Amazon MSK configuration, `num.replica.fetchers` has a value of 2\. To update your `num.replica.fetchers`, you can use the suggested values from the following table\. These values are for guidance purposes\. We recommend that you adjust these values based on your use case\. 
 
 
 ****  
@@ -45,6 +47,8 @@ When you turn on provisioned throughput for a cluster, you might not see the des
 | kafka\.m5\.12xlarge | 14 | 
 | kafka\.m5\.16xlarge | 16 | 
 | kafka\.m5\.24xlarge | 16 | 
+
+Your updated configuration may not take effect for up to 24 hours, and may take longer when a source volume is not fully utilized\. However, transitional volume performance at least equals the performance of source storage volumes during the migration period\. A fully\-utilized 1 TiB volume typically takes about six hours to migrate to an updated configuration\. 
 
 ## Provisioning storage throughput using the AWS Management Console<a name="provisioned-throughput-console"></a>
 
@@ -114,7 +118,7 @@ This section shows an example of how you can use the AWS CLI to create a cluster
 1. Run the following AWS CLI command from the directory where you saved the JSON file in the previous step\.
 
    ```
-   aws kafka create-cluster-v2 --cli-input-json fileb://cluster-creation.json
+   aws kafka create-cluster-v2 --cli-input-json file://cluster-creation.json
    ```
 
 ## Provisioning storage throughput using the API<a name="provisioned-throughput-api"></a>

@@ -1,5 +1,8 @@
 # Deleting an Amazon MSK Cluster<a name="msk-delete-cluster"></a>
 
+**Note**  
+If your cluster has an auto\-scaling policy, we recommend that you remove the policy before you delete the cluster\. For more information, see [Automatic scaling](msk-autoexpand.md)\.
+
 ## Deleting a cluster using the AWS Management Console<a name="delete-cluster-console"></a>
 
 1. Open the Amazon MSK console at [https://console.aws.amazon.com/msk/](https://console.aws.amazon.com/msk/)\.

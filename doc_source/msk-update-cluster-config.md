@@ -28,13 +28,13 @@ For information about MSK configuration, including how to create a custom config
 Cluster versions aren't simple integers\. To find the current version of the cluster, use the [DescribeCluster](https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn.html#DescribeCluster) operation or the [describe\-cluster](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/kafka/describe-cluster.html) AWS CLI command\. An example version is `KTVPDKIKX0DER`\.
 
    ```
-   aws kafka update-cluster-configuration --cluster-arn ClusterArn --configuration-info fileb://Path-to-Config-Info-File --current-version Current-Cluster-Version
+   aws kafka update-cluster-configuration --cluster-arn ClusterArn --configuration-info file://Path-to-Config-Info-File --current-version Current-Cluster-Version
    ```
 
    The following is an example of how to use this command:
 
    ```
-   aws kafka update-cluster-configuration --cluster-arn "arn:aws:kafka:us-east-1:0123456789012:cluster/exampleName/abcd1234-0123-abcd-5678-1234abcd-1" --configuration-info fileb://c:\users\tester\msk\configuration-info.json --current-version "K1X5R6FKA87"
+   aws kafka update-cluster-configuration --cluster-arn "arn:aws:kafka:us-east-1:0123456789012:cluster/exampleName/abcd1234-0123-abcd-5678-1234abcd-1" --configuration-info file://c:\users\tester\msk\configuration-info.json --current-version "K1X5R6FKA87"
    ```
 
    The output of this `update-cluster-configuration` command looks like the following JSON example\.

@@ -80,7 +80,7 @@ Amazon MSK clusters running version 2\.4\.1\.1 are compatible with any Apache Ka
 
 We recommend that you use MSK bug\-fix version 2\.4\.1\.1 for new Amazon MSK clusters if you prefer to use Apache Kafka 2\.4\.1\. You can update existing clusters running Apache Kafka version 2\.4\.1 to this version to incorporate this fix\. For information about upgrading an existing cluster, see [Updating the Apache Kafka version](version-upgrades.md)\.
 
-To work around this issue without upgrading the cluster to version 2\.4\.1\.1, see the [Consumer group stuck in `PreparingRebalance` state](troubleshooting.md#consumer-group-rebalance) section of the [](troubleshooting.md) guide\. 
+To work around this issue without upgrading the cluster to version 2\.4\.1\.1, see the [Consumer group stuck in `PreparingRebalance` state](troubleshooting.md#consumer-group-rebalance) section of the [Troubleshooting Your Amazon MSK Cluster](troubleshooting.md) guide\. 
 
 ## Apache Kafka version 2\.4\.1 \(use 2\.4\.1\.1 instead\)<a name="2.4.1"></a>
 
