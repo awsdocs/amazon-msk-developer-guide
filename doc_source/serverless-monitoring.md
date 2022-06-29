@@ -1,6 +1,8 @@
 # Monitoring for Serverless Clusters<a name="serverless-monitoring"></a>
 
-Amazon MSK integrates with Amazon CloudWatch so that you can collect, view, and analyze metrics for your MSK serverless cluster\. The metrics shown in the following table are available for all serverless clusters\. As these metrics are published as individual data points for each partition in the topic, we recommend viewing them as a 'SUM' statistic to get the topic\-level view\.
+Amazon MSK integrates with Amazon CloudWatch so that you can collect, view, and analyze metrics for your MSK serverless cluster\. The metrics shown in the following table are available for all serverless clusters\. As these metrics are published as individual data points for each partition in the topic, we recommend viewing them as a 'SUM' statistic to get the topic\-level view\. The "PerSec" metrics are correctly represented with a "SUM" statistics for a 1 minute period since they are published at a minutely rate.
+
+For periods that are more than a minute, you should use the CloudWatch Metric Math Expression - ``m1 * 60/PERIOD(m1)``
 
 
 **Metrics available at the DEFAULT monitoring level**  
