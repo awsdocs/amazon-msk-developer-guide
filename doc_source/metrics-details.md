@@ -1,25 +1,27 @@
-# Amazon MSK Metrics for Monitoring with CloudWatch<a name="metrics-details"></a>
+# Amazon MSK metrics for monitoring with CloudWatch<a name="metrics-details"></a>
 
 Amazon MSK integrates with Amazon CloudWatch so that you can collect, view, and analyze CloudWatch metrics for your Amazon MSK cluster\. The metrics that you configure for your MSK cluster are automatically collected and pushed to CloudWatch\. You can set the monitoring level for an MSK cluster to one of the following: `DEFAULT`, `PER_BROKER`, `PER_TOPIC_PER_BROKER`, or `PER_TOPIC_PER_PARTITION`\. The tables in the following sections show all the metrics that are available starting at each monitoring level\.
 
 `DEFAULT`\-level metrics are free\. Pricing for other metrics is described in the [Amazon CloudWatch pricing](https://aws.amazon.com/cloudwatch/pricing/) page\.
 
-## `DEFAULT` Level Monitoring<a name="default-metrics"></a>
+## `DEFAULT` Level monitoring<a name="default-metrics"></a>
 
 The metrics described in the following table are available at the `DEFAULT` monitoring level\. They are free\.
 
 
 **Metrics available at the `DEFAULT` monitoring level**  
 
-| Name | When Visible | Dimensions | Description | 
+| Name | When visible | Dimensions | Description | 
 | --- | --- | --- | --- | 
 | ActiveControllerCount | After the cluster gets to the ACTIVE state\. | Cluster Name | Only one controller per cluster should be active at any given time\. | 
 | BurstBalance |  After the cluster gets to the ACTIVE state\.  |  Cluster Name , Broker ID  |  The remaining balance of input\-output burst credits for EBS volumes in the cluster\. Use it to investigate latency or decreased throughput\. `BurstBalance` is not reported for EBS volumes when the baseline performance of a volume is higher than the maximum burst performance\. For more information, see [I/O Credits and burst performance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#IOcredit)\.  | 
 | BytesInPerSec | After you create a topic\. | Cluster Name, Broker ID, Topic | The number of bytes per second received from clients\. This metric is available per broker and also per topic\. | 
 | BytesOutPerSec | After you create a topic\. | Cluster Name, Broker ID, Topic | The number of bytes per second sent to clients\. This metric is available per broker and also per topic\. | 
-| ConnectionCount |  After the cluster gets to the ACTIVE state\.  |  Cluster Name, Broker ID  |  The number active Apache Kafka connections\.   | 
+| ClientConnectionCount | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID, Client Authentication | The number of active authenticated client connections\. | 
+| ConnectionCount | After the cluster gets to the ACTIVE state\. |  Cluster Name, Broker ID  | The number of active authenticated, unauthenticated, and inter\-broker connections\.  | 
 | CPUCreditBalance  |  After the cluster gets to the ACTIVE state\.  |  Cluster Name, Broker ID  |  This metric can help you monitor CPU credit balance on the brokers\. If your CPU usage is sustained above the baseline level of 20% utilization, you can run out of the CPU credit balance, which can have a negative impact on cluster performance\. You can take steps to reduce CPU load\. For example, you can reduce the number of client requests or update the broker type to an M5 broker type\.  | 
 | CpuIdle | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The percentage of CPU idle time\. | 
+| CpuIoWait | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The percentage of CPU idle time during a pending disk operation\. | 
 | CpuSystem | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The percentage of CPU in kernel space\. | 
 | CpuUser | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The percentage of CPU in user space\. | 
 | GlobalPartitionCount | After the cluster gets to the ACTIVE state\. | Cluster Name | The number of partitions across all topics in the cluster, excluding replicas\. Because GlobalPartitionCount doesn't include replicas, the sum of the PartitionCount values can be higher than GlobalPartitionCount if the replication factor for a topic is greater than 1\. | 
@@ -33,7 +35,7 @@ The metrics described in the following table are available at the `DEFAULT` moni
 | MemoryBuffered | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The size in bytes of buffered memory for the broker\. | 
 | MemoryCached | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The size in bytes of cached memory for the broker\. | 
 | MemoryFree | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The size in bytes of memory that is free and available for the broker\. | 
-| HeapMemoryAfterGC  |  After the cluster gets to the ACTIVE state\.  |  Cluster Name, Broker ID  | The percentage of total heap memory available after garbage collection\. | 
+| HeapMemoryAfterGC  |  After the cluster gets to the ACTIVE state\.  |  Cluster Name, Broker ID  | The percentage of total heap memory in use after garbage collection\. | 
 | MemoryUsed | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The size in bytes of memory that is in use for the broker\. | 
 | MessagesInPerSec | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The number of incoming messages per second for the broker\. | 
 | NetworkRxDropped | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The number of dropped receive packages\. | 
@@ -57,14 +59,14 @@ The metrics described in the following table are available at the `DEFAULT` moni
 | ZooKeeperRequestLatencyMsMean  | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | The mean latency in milliseconds for Apache ZooKeeper requests from broker\. | 
 | ZooKeeperSessionState | After the cluster gets to the ACTIVE state\. | Cluster Name, Broker ID | Connection status of broker's ZooKeeper session which may be one of the following: NOT\_CONNECTED: '0\.0', ASSOCIATING: '0\.1', CONNECTING: '0\.5', CONNECTEDREADONLY: '0\.8', CONNECTED: '1\.0', CLOSED: '5\.0', AUTH\_FAILED: '10\.0'\. | 
 
-## `PER_BROKER` Level Monitoring<a name="broker-metrics"></a>
+## `PER_BROKER` Level monitoring<a name="broker-metrics"></a>
 
 When you set the monitoring level to `PER_BROKER`, you get the metrics described in the following table in addition to all the `DEFAULT` level metrics\. You pay for the metrics in the following table, whereas the `DEFAULT` level metrics continue to be free\. The metrics in this table have the following dimensions: Cluster Name, Broker ID\.
 
 
 **Additional metrics that are available starting at the `PER_BROKER` monitoring level**  
 
-| Name | When Visible | Description | 
+| Name | When visible | Description | 
 | --- | --- | --- | 
 | BwInAllowanceExceeded | After the cluster gets to the ACTIVE state\. |  The number of packets shaped because the inbound aggregate bandwidth exceeded the maximum for the broker\.  | 
 | BwOutAllowanceExceeded | After the cluster gets to the ACTIVE state\. |  The number of packets shaped because the outbound aggregate bandwidth exceeded the maximum for the broker\.  | 
@@ -88,7 +90,7 @@ When you set the monitoring level to `PER_BROKER`, you get the metrics described
 | FetchThrottleTime | After bandwidth throttling is applied\. | The average fetch throttle time in milliseconds\. | 
 | NetworkProcessorAvgIdlePercent | After the cluster gets to the ACTIVE state\. | The average percentage of the time the network processors are idle\. | 
 | PpsAllowanceExceeded | After the cluster gets to the ACTIVE state\. |  The number of packets shaped because the bidirectional PPS exceeded the maximum for the broker\.  | 
-| ProduceLocalTimeMsMean | After the cluster gets to the ACTIVE state\. | The mean time in milliseconds for the follower to send a response\. | 
+| ProduceLocalTimeMsMean | After the cluster gets to the ACTIVE state\. | The mean time in milliseconds that the request is processed at the leader\. | 
 | ProduceMessageConversionsPerSec | After you create a topic\. | The number of produce message conversions per second for the broker\. | 
 | ProduceMessageConversionsTimeMsMean | After the cluster gets to the ACTIVE state\. | The mean time in milliseconds spent on message format conversions\. | 
 | ProduceRequestQueueTimeMsMean | After the cluster gets to the ACTIVE state\. | The mean time in milliseconds that request messages spend in the queue\. | 
@@ -114,7 +116,7 @@ When you set the monitoring level to `PER_BROKER`, you get the metrics described
 | VolumeWriteBytes  | After the cluster gets to the ACTIVE state\. |  The number of bytes written in a specified time period\.  | 
 | VolumeWriteOps  | After the cluster gets to the ACTIVE state\. |  The number of write operations in a specified time period\.  | 
 
-## `PER_TOPIC_PER_BROKER` Level Monitoring<a name="broker-topic-metrics"></a>
+## `PER_TOPIC_PER_BROKER` Level monitoring<a name="broker-topic-metrics"></a>
 
 When you set the monitoring level to `PER_TOPIC_PER_BROKER`, you get the metrics described in the following table, in addition to all the metrics from the `PER_BROKER` and DEFAULT levels\. Only the `DEFAULT` level metrics are free\. The metrics in this table have the following dimensions: Cluster Name, Broker ID, Topic\.
 
@@ -124,20 +126,20 @@ For an Amazon MSK cluster that uses Apache Kafka 2\.4\.1 or a newer version, the
 
 **Additional metrics that are available starting at the `PER_TOPIC_PER_BROKER` monitoring level**  
 
-| Name | When Visible | Description | 
+| Name | When visible | Description | 
 | --- | --- | --- | 
 | FetchMessageConversionsPerSec | After you create a topic\. | The number of fetched messages converted per second\. | 
 | MessagesInPerSec | After you create a topic\. | The number of messages received per second\. | 
 | ProduceMessageConversionsPerSec | After you create a topic\. | The number of conversions per second for produced messages\. | 
 
-## `PER_TOPIC_PER_PARTITION` Level Monitoring<a name="topic-partition-metrics"></a>
+## `PER_TOPIC_PER_PARTITION` Level monitoring<a name="topic-partition-metrics"></a>
 
 When you set the monitoring level to `PER_TOPIC_PER_PARTITION`, you get the metrics described in the following table, in addition to all the metrics from the `PER_TOPIC_PER_BROKER`, `PER_BROKER`, and DEFAULT levels\. Only the `DEFAULT` level metrics are free\. The metrics in this table have the following dimensions: Consumer Group, Topic, Partition\.
 
 
 **Additional metrics that are available starting at the `PER_TOPIC_PER_PARTITION` monitoring level**  
 
-| Name | When Visible | Description | 
+| Name | When visible | Description | 
 | --- | --- | --- | 
 | EstimatedTimeLag | After consumer group consumes from a topic\. | Time estimate \(in seconds\) to drain the partition offset lag\. | 
 | OffsetLag | After consumer group consumes from a topic\. | Partition\-level consumer lag in number of offsets\. | 

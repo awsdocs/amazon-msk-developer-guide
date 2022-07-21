@@ -1,4 +1,4 @@
-# Mutual TLS Authentication<a name="msk-authentication"></a>
+# Mutual TLS authentication<a name="msk-authentication"></a>
 
 You can enable client authentication with TLS for connections from your applications to your Amazon MSK brokers and ZooKeeper nodes\. To use client authentication, you need an ACM Private CA\. The ACM Private CA can be either in the same AWS account as your cluster, or in a different account\. For information about private CAs, see [Creating and Managing a Private CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/create-CA.html)\.
 
@@ -44,7 +44,7 @@ We highly recommend using independent ACM PCAs for each MSK cluster when you use
    }
    ```
 
-   For more information about encryption, see [Amazon MSK Encryption](msk-encryption.md)\.
+   For more information about encryption, see [Amazon MSK encryption](msk-encryption.md)\.
 
 1. On a machine where you have the AWS CLI installed, run the following command to create a cluster with authentication and in\-transit encryption enabled\. Save the cluster ARN provided in the response\.
 
@@ -54,9 +54,9 @@ We highly recommend using independent ACM PCAs for each MSK cluster when you use
 
 ## To set up a client to use authentication<a name="msk-authentication-client"></a>
 
-1. Create an Amazon EC2 instance to use as a client machine\. For simplicity, create this instance in the same VPC you used for the cluster\. See [Step 2: Create a Client Machine](create-client-machine.md) for an example of how to create such a client machine\.
+1. Create an Amazon EC2 instance to use as a client machine\. For simplicity, create this instance in the same VPC you used for the cluster\. See [Step 2: Create a client machine](create-client-machine.md) for an example of how to create such a client machine\.
 
-1. Create a topic\. For an example, see the instructions under [Step 3: Create a Topic](create-topic.md)\.
+1. Create a topic\. For an example, see the instructions under [Step 3: Create a topic](create-topic.md)\.
 
 1. On a machine where you have the AWS CLI installed, run the following command to get the bootstrap brokers of the cluster\. Replace *Cluster\-ARN* with the ARN of your cluster\.
 
@@ -138,19 +138,19 @@ To retrieve your client certificate, use the `acm-pca get-certificate` command a
 1. Run the following command to create a topic\.
 
    ```
-   bin/kafka-topics.sh --create --zookeeper ZooKeeper-Connection-String --replication-factor 3 --partitions 1 --topic ExampleTopic
+   <path-to-your-kafka-installation>/bin/kafka-topics.sh --create --zookeeper ZooKeeper-Connection-String --replication-factor 3 --partitions 1 --topic ExampleTopic
    ```
 
 1. Run the following command to start a console producer\. The file named `client.properties` is the one you created in the previous procedure\.
 
    ```
-   bin/kafka-console-producer.sh --broker-list BootstrapBroker-String --topic ExampleTopic --producer.config client.properties
+   <path-to-your-kafka-installation>/bin/kafka-console-producer.sh --broker-list BootstrapBroker-String --topic ExampleTopic --producer.config client.properties
    ```
 
 1. In a new command window on your client machine, run the following command to start a console consumer\.
 
    ```
-   bin/kafka-console-consumer.sh --bootstrap-server BootstrapBroker-String --topic ExampleTopic --consumer.config client.properties
+   <path-to-your-kafka-installation>/bin/kafka-console-consumer.sh --bootstrap-server BootstrapBroker-String --topic ExampleTopic --consumer.config client.properties
    ```
 
 1. Type messages in the producer window and watch them appear in the consumer window\.

@@ -1,15 +1,13 @@
-# Monitoring for Serverless Clusters<a name="serverless-monitoring"></a>
+# Monitoring serverless clusters<a name="serverless-monitoring"></a>
 
-Amazon MSK integrates with Amazon CloudWatch so that you can collect, view, and analyze metrics for your MSK serverless cluster\. The metrics shown in the following table are available for all serverless clusters\. As these metrics are published as individual data points for each partition in the topic, we recommend viewing them as a 'SUM' statistic to get the topic\-level view\. 
-We publish PerSec metrics for Amazon MSK to CloudWatch at a frequency of once per minute. This means that the 'SUM' statistic for a one-minute period accurately represents per-second data for PerSec metrics.
+Amazon MSK integrates with Amazon CloudWatch so that you can collect, view, and analyze metrics for your MSK Serverless cluster\. The metrics shown in the following table are available for all serverless clusters\. As these metrics are published as individual data points for each partition in the topic, we recommend viewing them as a 'SUM' statistic to get the topic\-level view\.
 
-To collect per-second data for a period of longer than one minute, use the following CloudWatch math expression: 
-``m1 * 60/PERIOD(m1)``
+Amazon MSK publishes `PerSec` metrics to CloudWatch at a frequency of once per minute\. This means that the 'SUM' statistic for a one\-minute period accurately represents per\-second data for `PerSec` metrics\. To collect per\-second data for a period of longer than one minute, use the following CloudWatch math expression: `m1 * 60/PERIOD(m1)`\.
 
 
 **Metrics available at the DEFAULT monitoring level**  
 
-| Name | When Visible | Dimensions | Description | 
+| Name | When visible | Dimensions | Description | 
 | --- | --- | --- | --- | 
 | BytesInPerSec | After a producer writes to a topic | Cluster Name, Topic | The number of bytes per second received from clients\. This metric is available for each broker and also for each topic\. | 
 | BytesOutPerSec | After a consumer group consumes from a topic | Cluster Name, Topic | The number of bytes per second sent to clients\. This metric is available for each broker and also for each topic\. | 

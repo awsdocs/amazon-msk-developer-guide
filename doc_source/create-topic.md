@@ -1,4 +1,4 @@
-# Step 3: Create a Topic<a name="create-topic"></a>
+# Step 3: Create a topic<a name="create-topic"></a>
 
 In this step of [Getting Started Using Amazon MSK](getting-started.md), you install Apache Kafka client libraries and tools on the client machine, and then you create a topic\.
 
@@ -6,7 +6,7 @@ In this step of [Getting Started Using Amazon MSK](getting-started.md), you inst
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Instances**\. Then select the check box beside the name of the client machine that you created in [Step 2: Create a Client Machine](create-client-machine.md)\.
+1. In the navigation pane, choose **Instances**\. Then select the check box beside the name of the client machine that you created in [Step 2: Create a client machine](create-client-machine.md)\.
 
 1. Choose **Actions**, and then choose **Connect**\. Follow the instructions in the console to connect to your client machine\.
 
@@ -34,20 +34,20 @@ If you want to use a mirror site other than the one used in this command, you ca
 
 1. Open the Amazon MSK console at [https://console.aws.amazon.com/msk/](https://console.aws.amazon.com/msk/)\.
 
-1. Wait for the status of **MSKTutorialCluster** to become **Active**\. This might take several minutes\. After the status becomes **Active**, choose the cluster name\. This action takes you to a page where you can see the cluster summary\.
+1. Wait for the status of your cluster to become **Active**\. This might take several minutes\. After the status becomes **Active**, choose the cluster name\. This takes you to a page containing the cluster summary\.
 
 1. Choose **View client information**\.
 
-1. Copy the private endpoint for plaintext authentication and the Apache ZooKeeper connection string \(also for plaintext communication\)\.
+1. Copy the connection string for plaintext authentication\.
 
-1. Run the following command, replacing *ZookeeperConnectString* with the string that you obtained in the previous instruction\.
+1. Run the following command, replacing *BootstrapServerString* with the connection string that you obtained in the previous step\.
 
    ```
-   bin/kafka-topics.sh --create --zookeeper ZookeeperConnectString --replication-factor 3 --partitions 1 --topic MSKTutorialTopic
+   <path-to-your-kafka-installation>/bin/kafka-topics.sh --create --bootstrap-server BootstrapServerString --replication-factor 3 --partitions 1 --topic MSKTutorialTopic
    ```
 
    If the command succeeds, you see the following message: Created topic MSKTutorialTopic\.
 
 **Next Step**
 
-[Step 4: Produce and Consume Data](produce-consume.md)
+[Step 4: Produce and consume data](produce-consume.md)

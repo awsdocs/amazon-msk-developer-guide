@@ -6,7 +6,7 @@ You can use LinkedIn's Cruise Control to rebalance your Amazon MSK cluster, dete
 
 1. Create an Amazon EC2 instance in the same Amazon VPC as the Amazon MSK cluster\.
 
-1. Install Prometheus on the Amazon EC2 instance that you created in the previous step\. Note the private IP and the port\. The default port number is 9090\. For information on how to configure Prometheus to aggregate metrics for your cluster, see [Open Monitoring with Prometheus](open-monitoring.md)\.
+1. Install Prometheus on the Amazon EC2 instance that you created in the previous step\. Note the private IP and the port\. The default port number is 9090\. For information on how to configure Prometheus to aggregate metrics for your cluster, see [Open monitoring with Prometheus](open-monitoring.md)\.
 
 1. Download [Cruise Control](https://github.com/linkedin/cruise-control/releases) on the Amazon EC2 instance\. \(Alternatively, you can use a separate Amazon EC2 instance for Cruise Control if you prefer\.\) For a cluster that has Apache Kafka version 2\.4\.\*, use the latest 2\.4\.\* Cruise Control release\. If your cluster has an Apache Kafka version that is older than 2\.4\.\*, use the latest 2\.0\.\* Cruise Control release\.
 
@@ -79,7 +79,7 @@ You can use LinkedIn's Cruise Control to rebalance your Amazon MSK cluster, dete
 1. Run the following command to start Cruise Control\. Consider using a tool like `screen` or `tmux` to keep a long\-running session open\.
 
    ```
-   ./kafka-cruise-control-start.sh config/cruisecontrol.properties 9091
+   <path-to-your-kafka-installation>/bin/kafka-cruise-control-start.sh config/cruisecontrol.properties 9091
    ```
 
 1. Use the Cruise Control APIs or the UI to make sure that Cruise Control has the cluster load data and that it's making rebalancing suggestions\. It might take several minutes to get a valid window of metrics\.

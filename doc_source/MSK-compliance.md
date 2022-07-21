@@ -1,4 +1,4 @@
-# Compliance Validation for Amazon Managed Streaming for Apache Kafka<a name="MSK-compliance"></a>
+# Compliance validation for Amazon Managed Streaming for Apache Kafka<a name="MSK-compliance"></a>
 
 Third\-party auditors assess the security and compliance of Amazon Managed Streaming for Apache Kafka as part of AWS compliance programs\. These include PCI and HIPAA BAA\.
 

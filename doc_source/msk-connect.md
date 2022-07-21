@@ -10,7 +10,7 @@ MSK Connect supports connectors for any Apache Kafka cluster with connectivity t
 
 MSK Connect continuously monitors connector health and delivery state, patches and manages the underlying hardware, and autoscales the connectors to match changes in throughput\.
 
-To get started using MSK Connect, see [Getting Started Using MSK Connect](msk-connect-getting-started.md)\. 
+To get started using MSK Connect, see [Getting started using MSK Connect](msk-connect-getting-started.md)\. 
 
 To learn about the AWS resources that you can create with MSK Connect, see [Connectors](msk-connect-connectors.md), [Plugins](msk-connect-plugins.md), and [Workers](msk-connect-workers.md)\.
 

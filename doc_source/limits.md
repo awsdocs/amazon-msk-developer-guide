@@ -1,11 +1,11 @@
-# Amazon MSK Quota<a name="limits"></a>
+# Amazon MSK quota<a name="limits"></a>
 
 ## Amazon MSK quota<a name="msk-provisioned-quota"></a>
 + Up to 90 brokers per account and 30 brokers per cluster\. To request higher quota, [create a support case](https://console.aws.amazon.com/support/home#/)\.
 + A minimum of 1 GiB of storage per broker\.
 + A maximum of 16384 GiB of storage per broker\.
 + A cluster that uses [IAM access control](iam-access-control.md) can have up to 3000 TCP connections per broker at any given time\. To increase this limit, you can adjust the `listener.name.client_iam.max.connections` or the `listener.name.client_iam_public.max.connections` configuration property using the Kafka AlterConfig API or the `kafka-configs.sh` tool\. It's important to note that increasing either property to a high value can result in unavailability\.
-+ A cluster that uses [IAM access control](iam-access-control.md) can accept new connections at a rate of up to 20 TCP connections per broker per second for all broker types, except for `kafka.t3.small`\. Brokers of type `kafka.t3.small` are limited to 4 TCP connections per broker per second\. To request a quota adjustment, you can [create a support case](https://console.aws.amazon.com/support/home#/)\. 
++ Limits on TCP connections\. A cluster that uses [IAM access control](iam-access-control.md) can accept new connections at a rate of up to 20 TCP connections per broker per second for all broker types, except for the type kafka\.t3\.small\. Brokers of type kafka\.t3\.small can accept no more than 4 TCP connections per broker per second\. If the new connection rate exceeds this limit, Amazon MSK throttles connection requests\.
 
   To handle retries on failed connections, you can set the `reconnect.backoff.ms` configuration parameter on the client side\. For example, if you want a client to retry connections after 1 second, set `reconnect.backoff.ms` to 1000\. For more information, see [https://kafka.apache.org/documentation/#producerconfigs_reconnect.backoff.ms](https://kafka.apache.org/documentation/#producerconfigs_reconnect.backoff.ms) in the Apache Kafka documentation\.
 + Up to 100 configurations per account\. To request higher quota, [create a support case](https://console.aws.amazon.com/support/home#/)\.

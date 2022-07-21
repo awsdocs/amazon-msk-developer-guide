@@ -1,4 +1,4 @@
-# Getting the bootstrap brokers for an Amazon MSK Cluster<a name="msk-get-bootstrap-brokers"></a>
+# Getting the bootstrap brokers for an Amazon MSK cluster<a name="msk-get-bootstrap-brokers"></a>
 
 ## Getting the bootstrap brokers using the AWS Management Console<a name="get-bootstrap-console"></a>
 

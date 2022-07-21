@@ -12,11 +12,11 @@ In this step you create the following resources that you need for this getting\-
 
 1. Choose **Create bucket**\.
 
-1. Enter `mkc-tutorial-destination-bucket` for the name of the bucket\.
+1. For the name of the bucket, enter a descriptive name such as `mkc-tutorial-destination-bucket`\.
 
 1. Scroll down and choose **Create bucket**\.
 
-1. In the list of bucket, choose the newly created `mkc-tutorial-destination-bucket`\.
+1. In the list of buckets, choose the newly created bucket\.
 
 1. Choose **Create folder**\.
 
@@ -34,13 +34,15 @@ In this step you create the following resources that you need for this getting\-
 
 1. For the cluster name enter `mkc-tutorial-cluster`\.
 
-1. Under **Networking**, choose an Amazon VPC, then set the **Number of Zones** to 2, then select the Availability Zones and subnets that you want to use\. Remember the IDs the of the Amazon VPC and subnets you selected because we need them later in this tutorial\.
+1. Under General cluster properties, choose **Provisioned** for the cluster type\.
+
+1. Under **Networking**, choose an Amazon VPC\. Then select the Availability Zones and subnets that you want to use\. Remember the IDs of the Amazon VPC and subnets that you selected because you need them later in this tutorial\.
 
 1. Under **Access control methods** ensure that only **Unauthenticated access** is selected\.
 
 1. Under **Encryption** ensure that only **Plaintext** is selected\.
 
-1. Scroll down and choose **Create cluster**\. This takes you to the cluster's details page\. On that page, look for the security group ID under **Security groups applied**\. Remember that ID because we need it later in this tutorial\.
+1. Continue through the wizard and then choose **Create cluster**\. This takes you to the details page for the cluster\. On that page, under **Security groups applied**, find the security group ID\. Remember that ID because you need it later in this tutorial\.
 
 **To create the IAM role that can write to the destination bucket**
 
@@ -58,39 +60,40 @@ In this step you create the following resources that you need for this getting\-
 
 1. Choose **Create policy**\. This opens a new tab in your browser where you will create the policy\. Leave the original role\-creation tab open because we'll get back to it later\.
 
-1. Choose the **JSON** tab, then replace the text in the window with the following policy\.
+1. Choose the **JSON** tab, and then replace the text in the window with the following policy\.
 
    ```
    {
-    "Version":"2012-10-17",
-    "Statement":[
+     "Version": "2012-10-17",
+     "Statement": [
        {
-       "Effect":"Allow",
-       "Action":[
+         "Effect": "Allow",
+         "Action": [
            "s3:ListAllMyBuckets"
-           ],
-       "Resource":"arn:aws:s3:::*"
+         ],
+         "Resource": "arn:aws:s3:::*"
        },
        {
-       "Effect":"Allow",
-       "Action":[
+         "Effect": "Allow",
+         "Action": [
            "s3:ListBucket",
-           "s3:GetBucketLocation"
-           ],
-       "Resource":"arn:aws:s3:::mkc-tutorial-destination-bucket"
+           "s3:GetBucketLocation",
+           "s3:DeleteObject"
+         ],
+         "Resource": "arn:aws:s3:::<my-tutorial-destination-bucket>"
        },
        {
-       "Effect":"Allow",
-       "Action":[
+         "Effect": "Allow",
+         "Action": [
            "s3:PutObject",
            "s3:GetObject",
            "s3:AbortMultipartUpload",
            "s3:ListMultipartUploadParts",
            "s3:ListBucketMultipartUploads"
-           ],
-       "Resource":"*"
+         ],
+         "Resource": "*"
        }
-    ]
+     ]
    }
    ```
 

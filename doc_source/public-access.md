@@ -9,9 +9,9 @@ To turn on public access to a cluster, first ensure that the cluster meets all o
 + Unauthenticated access control must be off and at least one of the following access\-control methods must be on: SASL/IAM, SASL/SCRAM, mTLS\. For information about how to update the access\-control method of a cluster, see [Updating a cluster's security settings](msk-update-security.md)\.
 + Encryption within the cluster must be turned on\. The on setting is the default when creating a cluster\. It's not possible to turn on encryption within the cluster for a cluster that was created with it turned off\. It is therefore not possible to turn on public access for a cluster that was created with encryption within the cluster turned off\.
 + Plaintext traffic between brokers and clients must be off\. For information about how to turn it off if it's on, see [Updating a cluster's security settings](msk-update-security.md)\.
-+ If you are using the SASL/SCRAM or mTLS access\-control methods, you must set Apache Kafka ACLs for your cluster\. After you set the Apache Kafka ACLs for your cluster, update the cluster's configuration to have the property `allow.everyone.if.no.acl.found` to false for the cluster\. For information about how to update the configuration of a cluster, see [Amazon MSK Configuration Operations](msk-configuration-operations.md)\. If you are using IAM access control and want to apply authorization policies or update your authorization policies, see [IAM access control](iam-access-control.md)\. For information about Apache Kafka ACLs, see [Apache Kafka ACLs](msk-acls.md)\.
++ If you are using the SASL/SCRAM or mTLS access\-control methods, you must set Apache Kafka ACLs for your cluster\. After you set the Apache Kafka ACLs for your cluster, update the cluster's configuration to have the property `allow.everyone.if.no.acl.found` to false for the cluster\. For information about how to update the configuration of a cluster, see [Amazon MSK configuration operations](msk-configuration-operations.md)\. If you are using IAM access control and want to apply authorization policies or update your authorization policies, see [IAM access control](iam-access-control.md)\. For information about Apache Kafka ACLs, see [Apache Kafka ACLs](msk-acls.md)\.
 
-After you ensure that an MSK cluster meets the conditions listed above, you can use the AWS Management Console, the AWS CLI, or the Amazon MSK API to turn on public access\. After you turn on public access to a cluster, you can get a public bootstrap\-brokers string for it\. For information about getting the bootstrap brokers for a cluster, see [Getting the bootstrap brokers for an Amazon MSK Cluster](msk-get-bootstrap-brokers.md)\.
+After you ensure that an MSK cluster meets the conditions listed above, you can use the AWS Management Console, the AWS CLI, or the Amazon MSK API to turn on public access\. After you turn on public access to a cluster, you can get a public bootstrap\-brokers string for it\. For information about getting the bootstrap brokers for a cluster, see [Getting the bootstrap brokers for an Amazon MSK cluster](msk-get-bootstrap-brokers.md)\.
 
 **Important**  
 In addition to turning on public access, ensure that the cluster's security groups have inbound TCP rules that allow public access from your IP address\. We recommend that you make these rules as restrictive as possible\. For information about security groups and inbound rules, see [Security groups for your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) in the Amazon VPC User Guide\. For port numbers, see [Port information](port-info.md)\. For instructions on how to change a cluster's security group, see [Changing an Amazon MSK cluster's security group](change-security-group.md)\.
@@ -25,7 +25,7 @@ If you use the following instructions to turn on public access and then still ca
 
 1. In the list of clusters, choose the cluster to which you want to turn on public access\.
 
-1. In the **Details** page of the cluster, find the **Network settings** section\.
+1. Choose the **Properties** tab, then find the **Network settings** section\.
 
 1. Choose **Edit public access**\.
 
@@ -93,4 +93,4 @@ To turn off public access, use a similar AWS CLI command, but with the following
 + To use the API to turn public access to a cluster on or off, see [UpdateConnectivity](https://docs.aws.amazon.com//msk/1.0/apireference/clusters-clusterarn-connectivity.html#UpdateConnectivityn)\.
 
 **Note**  
-For security reasons, Amazon MSK doesn't allow public access to Apache ZooKeeper nodes\. For information about how to control access to the Apache ZooKeeper nodes of your MSK cluster from within AWS, see [Controlling Access to Apache ZooKeeper](zookeeper-security.md)\.
+For security reasons, Amazon MSK doesn't allow public access to Apache ZooKeeper nodes\. For information about how to control access to the Apache ZooKeeper nodes of your MSK cluster from within AWS, see [Controlling access to Apache ZooKeeper](zookeeper-security.md)\.

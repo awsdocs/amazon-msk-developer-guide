@@ -1,4 +1,4 @@
-# Migrating Clusters Using Apache Kafka's MirrorMaker<a name="migration"></a>
+# Migrating clusters using Apache Kafka's MirrorMaker<a name="migration"></a>
 
 You can mirror or migrate your cluster using MirrorMaker, which is part of Apache Kafka\. For example, you can use it to migrate your Apache Kafka cluster to Amazon MSK or to migrate from one MSK cluster to another\. For information about how to use MirrorMaker, see [Mirroring data between clusters](https://kafka.apache.org/documentation/#basic_ops_mirror_maker) in the Apache Kafka documentation\. We recommend setting up MirrorMaker in a highly available configuration\.
 
@@ -14,7 +14,7 @@ You can mirror or migrate your cluster using MirrorMaker, which is part of Apach
 
 1. Shut down MirrorMaker\.
 
-## Migrating Your Apache Kafka Cluster to Amazon MSK<a name="migrate-on-prem-to-msk"></a>
+## Migrating your Apache Kafka cluster to Amazon MSK<a name="migrate-on-prem-to-msk"></a>
 
 Suppose that you have an Apache Kafka cluster named `CLUSTER_ONPREM`\. That cluster is populated with topics and data\. If you want to migrate that cluster to a newly created Amazon MSK cluster named `CLUSTER_AWSMSK`, this procedure provides a high\-level view of the steps that you need to follow\. 
 
@@ -29,7 +29,7 @@ Suppose that you have an Apache Kafka cluster named `CLUSTER_ONPREM`\. That clus
 1. Run the following command to mirror all topics:
 
    ```
-   ./bin/kafka-mirror-maker.sh --consumer.config config/mirrormaker-consumer.properties --producer.config config/mirrormaker-producer.properties --whitelist '.*'
+   <path-to-your-kafka-installation>/bin/kafka-mirror-maker.sh --consumer.config config/mirrormaker-consumer.properties --producer.config config/mirrormaker-producer.properties --whitelist '.*'
    ```
 
    In this command, `config/mirrormaker-consumer.properties` points to a bootstrap broker in `CLUSTER_ONPREM`; for example, `bootstrap.servers=localhost:9092`\. And `config/mirrormaker-producer.properties` points to a bootstrap broker in CLUSTER\_AWSMSK; for example, `bootstrap.servers=10.0.0.237:9092,10.0.2.196:9092,10.0.1.233:9092`\.
@@ -42,11 +42,11 @@ Suppose that you have an Apache Kafka cluster named `CLUSTER_ONPREM`\. That clus
 
 1. After MirrorMaker finishes mirroring all topics, stop all producers and consumers, and then stop MirrorMaker\. Then redirect the producers and consumers to the `CLUSTER_AWSMSK` cluster by changing their producer and consumer bootstrap brokers values\. Restart all producers and consumers on `CLUSTER_AWSMSK`\. 
 
-## Migrating From One Amazon MSK Cluster to Another<a name="msk-to-msk"></a>
+## Migrating from one Amazon MSK cluster to another<a name="msk-to-msk"></a>
 
 You can use Apache MirrorMaker to migrate an MSK cluster to another cluster\. For example, you can migrate from one version of Apache Kafka to another\. For an example of how to use AWS CloudFormation to do this, see [AWS::MSK::Cluster Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-msk-cluster.html#aws-resource-msk-cluster--examples) \(search for the example titled `Create Two MSK Clusters To Use With Apache MirrorMaker`\.
 
-## MirrorMaker 1\.0 Best Practices<a name="mirrormaker-best-practices"></a>
+## MirrorMaker 1\.0 best practices<a name="mirrormaker-best-practices"></a>
 
 This list of best practices applies to MirrorMaker 1\.0\.
 + Run MirrorMaker on the destination cluster\. This way, if a network problem happens, the messages are still available in the source cluster\. If you run MirrorMaker on the source cluster and events are buffered in the producer and there is a network issue, events might be lost\. 
@@ -79,7 +79,7 @@ This list of best practices applies to MirrorMaker 1\.0\.
 + Typically, it takes more than one consumer to saturate a producer in MirrorMaker\. So, set up multiple consumers\. First, set them up on different machines to provide high availability\. Then, scale individual machines up to having a consumer for each partition, with consumers equally distributed across machines\.
 + For high throughput ingestion and delivery, tune the receive and send buffers because their defaults might be too low\. For maximum performance, ensure that the total number of streams \(num\.streams\) matches all of the topic partitions that MirrorMaker is trying to copy to the destination cluster\.
 
-## MirrorMaker 2\.\* Advantages<a name="mirrormaker-v2"></a>
+## MirrorMaker 2\.\* advantages<a name="mirrormaker-v2"></a>
 + Makes use of the Apache Kafka Connect framework and ecosystem\.
 + Detects new topics and partitions\.
 + Automatically syncs topic configuration between clusters\.

@@ -1,4 +1,4 @@
-# How Do I Get Started with Encryption?<a name="msk-working-with-encryption"></a>
+# How do I get started with encryption?<a name="msk-working-with-encryption"></a>
 
 When creating an MSK cluster, you can specify encryption settings in JSON format\. The following is an example\.
 
@@ -42,7 +42,7 @@ To specify the encryption mode for data in transit between clients and brokers, 
 
 **To test TLS encryption**
 
-1. Create a client machine following the guidance in [Step 2: Create a Client Machine](create-client-machine.md)\.
+1. Create a client machine following the guidance in [Step 2: Create a client machine](create-client-machine.md)\.
 
 1. Install Apache Kafka on the client machine\.
 
@@ -54,10 +54,10 @@ To specify the encryption mode for data in transit between clients and brokers, 
 
    In the result, look for the value of `ZookeeperConnectString` and save it because you need it in the next step\.
 
-1. Go to the `bin` folder of the Apache Kafka installation on the client machine\. To create a topic, run the following command, replacing *ZookeeperConnectString* with the value you obtained for `ZookeeperConnectString` in the previous step\.
+1. Run the following command on your client machine to create a topic\. Replace *ZookeeperConnectString* with the value you obtained for `ZookeeperConnectString` in the previous step\.
 
    ```
-   kafka-topics.sh --create --zookeeper ZookeeperConnectString --replication-factor 3 --partitions 1 --topic TLSTestTopic
+   <path-to-your-kafka-installation>/bin/kafka-topics.sh --create --zookeeper ZookeeperConnectString --replication-factor 3 --partitions 1 --topic TLSTestTopic
    ```
 
 1. In this example we use the JVM truststore to talk to the MSK cluster\. To do this, first create a folder named `/tmp` on the client machine\. Then, go to the `bin` folder of the Apache Kafka installation, and run the following command\. \(Your JVM path might be different\.\)
@@ -87,16 +87,16 @@ To specify the encryption mode for data in transit between clients and brokers, 
    }
    ```
 
-1. In the `bin` folder of the Apache Kafka installation on the client machine, run the following, replacing *BootstrapBrokerStringTls* with the value you obtained in the previous step\. Leave this producer command running\.
+1. Run the following command to create a console producer on your client machine\. Replace *BootstrapBrokerStringTls* with the value you obtained in the previous step\. Leave this producer command running\.
 
    ```
-   kafka-console-producer.sh --broker-list BootstrapBrokerStringTls --producer.config client.properties --topic TLSTestTopic
+   <path-to-your-kafka-installation>/bin/kafka-console-producer.sh --broker-list BootstrapBrokerStringTls --producer.config client.properties --topic TLSTestTopic
    ```
 
-1. Open a new command window on the same client machine, go to the `bin` folder of the Apache Kafka installation, and run the following command to create a consumer\.
+1. Open a new command window and connect to the same client machine\. Then, run the following command to create a console consumer\.
 
    ```
-   kafka-console-consumer.sh --bootstrap-server BootstrapBrokerStringTls --consumer.config client.properties --topic TLSTestTopic
+   <path-to-your-kafka-installation>/bin/kafka-console-consumer.sh --bootstrap-server BootstrapBrokerStringTls --consumer.config client.properties --topic TLSTestTopic
    ```
 
 1. In the producer window, type a text message followed by a return, and look for the same message in the consumer window\. Amazon MSK encrypted this message in transit\.

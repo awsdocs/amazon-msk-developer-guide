@@ -8,35 +8,27 @@ In the step, you perform two tasks\. The first task is to create an Amazon EC2 i
 
 1. Choose **Launch instance**\.
 
-1. Choose the first **Select** button\.
+1. Enter a descriptive **Name** for your client machine, such as **msk\-serverless\-tutorial\-client**\.
 
-1. Choose **Next: Configure Instance Details**\.
+1. Leave the **Amazon Linux 2 AMI \(HVM\) \- Kernel 5\.10, SSD Volume Type** selected for **Amazon Machine Image \(AMI\) type**\.
 
-1. For **Network**, choose the serverless cluster's virtual private cloud \(VPC\)\. This is the VPC based on the Amazon VPC service whose ID you saved after you created the cluster\.
+1. Leave the **t2\.micro** instance type selected\.
+
+1. Under **Key pair \(login\)**, choose **Create a new key pair**\. Enter **MSKServerlessKeyPair** for **Key pair name**\. Then choose **Download Key Pair**\. Alternatively, you can use an existing key pair\.
+
+1. For **Network settings**, choose **Edit**\.
+
+1. Under **VPC**, enter the ID of the virtual private cloud \(VPC\) for your serverless cluster \. This is the VPC based on the Amazon VPC service whose ID you saved after you created the cluster\.
 
 1. For **Subnet**, choose the subnet whose ID you saved after you created the cluster\.
 
-1. For **IAM role**, choose `msk-serverless-tutorial`\.
+1. For **Firewall \(security groups\)**, select the security group associated with the cluster\. This value works if that security group has an inbound rule that allows traffic from the security group to itself\. With such a rule, members of the same security group can communicate with each other\. For more information, see [Security group rules](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#SecurityGroupRules) in the Amazon VPC Developer Guide\.
 
-1. Choose **Next: Add Storage**\.
+1. Expand the **Advanced details** section and choose the IAM role that you created in [Step 2: Create an IAM role](create-iam-role.md)\.
 
-1. Choose **Next: Add Tags**\.
+1. Choose **Launch**\.
 
-1. Choose **Add Tag**, then under **Key** enter `Name` and under **Value** enter `msk-serverless-tutorial`\.
-
-1. Choose **Next: Configure Security Group**\.
-
-1. Choose the button labeled **Select an existing security group**\.
-
-1. In the list of security groups, select the security group associated with the cluster\. This works if that security group has an inbound rule that allows traffic from the security group to itself\. Such a rule allows members of the same security group to communicate with each other\. For more information, see [Security group rules](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#SecurityGroupRules) in the Amazon VPC Developer Guide\.
-
-1. Choose **Review and Launch** and then choose **Launch**\.
-
-1. Choose an existing key pair, or create a new key pair\.
-
-1. Choose **Launch Instances**, and then choose **View Instances**\.
-
-1. Choose the check box in the row that represents this newly created Amazon EC2 instance\. From this point forward, we call this instance the *client machine*\.
+1. In the left navigation pane, choose **Instances**\. Then choose the check box in the row that represents your newly created Amazon EC2 instance\. From this point forward, we call this instance the *client machine*\.
 
 1. Choose **Connect** and follow the instructions to connect to the client machine\.
 

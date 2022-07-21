@@ -1,6 +1,6 @@
-# Amazon MSK Configuration Operations<a name="msk-configuration-operations"></a>
+# Amazon MSK configuration operations<a name="msk-configuration-operations"></a>
 
-This topic describes how to create custom MSK configurations and how to perform operations on them\. For information about how to use MSK configurations to create or update clusters, see [Amazon MSK: How It Works](operations.md)\.
+This topic describes how to create custom MSK configurations and how to perform operations on them\. For information about how to use MSK configurations to create or update clusters, see [Amazon MSK: How it works](operations.md)\.
 
 **Topics**
 + [To create an MSK configuration](#msk-configuration-operations-create)

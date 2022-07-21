@@ -1,4 +1,4 @@
-# Expanding an Amazon MSK Cluster<a name="msk-update-broker-count"></a>
+# Expanding an Amazon MSK cluster<a name="msk-update-broker-count"></a>
 
 Use this Amazon MSK operation when you want to increase the number of brokers in your MSK cluster\. To expand a cluster, make sure that it is in the `ACTIVE` state\.
 

@@ -1,4 +1,4 @@
-# Controlling Access to Apache ZooKeeper<a name="zookeeper-security"></a>
+# Controlling access to Apache ZooKeeper<a name="zookeeper-security"></a>
 
 For security reasons you can limit access to the Apache ZooKeeper nodes that are part of your Amazon MSK cluster\. To limit access to the nodes, you can assign a separate security group to them\. You can then decide who gets access to that security group\.
 
@@ -8,7 +8,7 @@ For security reasons you can limit access to the Apache ZooKeeper nodes that are
 
 ## To place your Apache ZooKeeper nodes in a separate security group<a name="zookeeper-security-group"></a>
 
-1. Get the Apache ZooKeeper connection string for your cluster\. To learn how, see [Getting the Apache ZooKeeper connection string for an Amazon MSK Cluster](msk-get-connection-string.md)\. The connection string contains the DNS names of your Apache ZooKeeper nodes\.
+1. Get the Apache ZooKeeper connection string for your cluster\. To learn how, see [Getting the Apache ZooKeeper connection string for an Amazon MSK cluster](msk-get-connection-string.md)\. The connection string contains the DNS names of your Apache ZooKeeper nodes\.
 
 1. Use a tool like `host` or `ping` to convert the DNS names you obtained in the previous step to IP addresses\. Save these IP addresses because you need them later in this procedure\.
 
@@ -32,9 +32,9 @@ For security reasons you can limit access to the Apache ZooKeeper nodes that are
 
 You can use TLS security for encryption in transit between your clients and your Apache ZooKeeper nodes\. To implement TLS security with your Apache ZooKeeper nodes, do the following:
 + Clusters must use Apache Kafka version 2\.5\.1 or later to use TLS security with Apache ZooKeeper\.
-+ Enable TLS security when you create or configure your cluster\. Clusters created with Apache Kafka version 2\.5\.1 or later with TLS enabled automatically use TLS security with Apache ZooKeeper endpoints\. For information about setting up TLS security, see [How Do I Get Started with Encryption?](msk-working-with-encryption.md)\.
++ Enable TLS security when you create or configure your cluster\. Clusters created with Apache Kafka version 2\.5\.1 or later with TLS enabled automatically use TLS security with Apache ZooKeeper endpoints\. For information about setting up TLS security, see [How do I get started with encryption?](msk-working-with-encryption.md)\.
 + Retrieve the TLS Apache ZooKeeper endpoints using the [DescribeCluster ](https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn.html#DescribeCluster) operation\.
-+ Create an Apache ZooKeeper configuration file for use with the following CLI commands: Config, ACL, and ZooKeeper Shell\. You use the Apache Zookeeper config file with these commands using the `--zk-tls-config-file` parameter\.
++ Create an Apache ZooKeeper configuration file for use with the `kafka-configs.sh` and [https://kafka.apache.org/documentation/#security_authz_cli](https://kafka.apache.org/documentation/#security_authz_cli) tools, or with the ZooKeeper shell\. With each tool, you use the `--zk-tls-config-file` parameter to specify your Apache ZooKeeper config\.
 
   The following example shows a typical Apache ZooKeeper configuration file: 
 
@@ -56,10 +56,10 @@ You can use TLS security for encryption in transit between your clients and your
   -Dzookeeper.ssl.trustStore.password=changeit"
   ```
 
-  Once you have configured the `KAFKA_OPTS` environment variable, you can use CLI commands normally\. The following example creates an Apache Kafka topic using the Apache ZooKeeper configuration from the `KAFKA_OPTS` environment variable:
+  After you configure the `KAFKA_OPTS` environment variable, you can use CLI commands normally\. The following example creates an Apache Kafka topic using the Apache ZooKeeper configuration from the `KAFKA_OPTS` environment variable:
 
   ```
-  bin/kafka-topics.sh --create --zookeeper ZooKeeperTLSConnectString --replication-factor 3 --partitions 1 --topic AWSKafkaTutorialTopic
+  <path-to-your-kafka-installation>/bin/kafka-topics.sh --create --zookeeper ZooKeeperTLSConnectString --replication-factor 3 --partitions 1 --topic AWSKafkaTutorialTopic
   ```
 
 **Note**  

@@ -10,7 +10,7 @@ In this step, you perform two tasks\. First, you create an MSK Serverless cluste
 
 1. For **Creation method**, leave the **Quick create** option selected\. The **Quick create** option lets you create a serverless cluster with default settings\.
 
-1. For **Cluster name**, enter `msk-serverless-tutorial`\.
+1. For **Cluster name**, enter a descriptive name, such as **msk\-serverless\-tutorial\-cluster**\.
 
 1. For **General cluster properties**, choose **Serverless** as the **Cluster type**\. Use the default values for the remaining **General cluster** properties\.
 
@@ -24,7 +24,7 @@ You can connect clients from up to five different VPCs with MSK Serverless clust
 
 1. In the **Cluster summary** section, choose **View client information**\. This button remains grayed out until Amazon MSK finishes creating the cluster\. You might need to wait a few minutes until the button becomes active so you can use it\.
 
-1. Copy the string under the label **Endpoint**\. This is your bootstrap\-server string\.
+1. Copy the string under the label **Endpoint**\. This is your bootstrap server string\.
 
 1. Choose the **Properties** tab\.
 

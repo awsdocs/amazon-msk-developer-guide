@@ -9,7 +9,7 @@ If you turn on authentication using IAM, SASL, or TLS, you must also turn on enc
 
 ****  
 
-| Authentication | Client\-Broker Encryption Options | Broker\-Broker Encryption | 
+| Authentication | Client\-broker encryption options | Broker\-broker encryption | 
 | --- | --- | --- | 
 | Unauthenticated | TLS, PLAINTEXT, TLS\_PLAINTEXT | Can be on or off\. | 
 | mTLS | TLS, TLS\_PLAINTEXT | Must be on\. | 

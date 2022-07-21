@@ -125,7 +125,7 @@ You can't attach KafkaConnectServiceRolePolicy to your IAM entities\. This polic
 
 ## MSK Connect updates to AWS managed policies<a name="security-iam-awsmanpol-updates"></a>
 
-View details about updates to AWS managed policies for MSK Connect since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the [Document History for Amazon MSK Developer Guide](doc-history.md) page\.
+View details about updates to AWS managed policies for MSK Connect since this service began tracking these changes\.
 
 
 | Change | Description | Date | 

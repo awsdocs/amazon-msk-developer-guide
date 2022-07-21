@@ -245,4 +245,4 @@ Now that you have enabled internet access for Amazon MSK Connect you are ready t
       }
       ```
 
-For a Debezium connector example with detailed steps, see [Introducing Amazon MSK Connect – Stream Data to and from Your Apache Kafka Clusters Using Managed Connectors](https://aws.amazon.com/blogs/aws/introducing-amazon-msk-connect-stream-data-to-and-from-your-apache-kafka-clusters-using-managed-connectors/)\.
+For a Debezium connector example with detailed steps, see [Introducing Amazon MSK Connect \- Stream Data to and from Your Apache Kafka Clusters Using Managed Connectors](https://aws.amazon.com/blogs/aws/introducing-amazon-msk-connect-stream-data-to-and-from-your-apache-kafka-clusters-using-managed-connectors/)\.

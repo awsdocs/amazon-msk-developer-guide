@@ -20,5 +20,5 @@ To help you get started with serverless clusters, and to learn more about config
 
 **Topics**
 + [Getting started using MSK Serverless clusters](serverless-getting-started.md)
-+ [Configuration for Serverless Clusters](serverless-config.md)
-+ [Monitoring for Serverless Clusters](serverless-monitoring.md)
++ [Configuration for serverless clusters](serverless-config.md)
++ [Monitoring serverless clusters](serverless-monitoring.md)

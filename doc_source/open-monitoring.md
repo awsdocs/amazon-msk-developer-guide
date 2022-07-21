@@ -1,8 +1,8 @@
-# Open Monitoring with Prometheus<a name="open-monitoring"></a>
+# Open monitoring with Prometheus<a name="open-monitoring"></a>
 
 You can monitor your MSK cluster with Prometheus, an open\-source monitoring system for time\-series metric data\. You can publish this data to Amazon Managed Service for Prometheus using Prometheus's remote write feature\. You can also use tools that are compatible with Prometheus\-formatted metrics or tools that integrate with Amazon MSK Open Monitoring, like [Datadog](https://docs.datadoghq.com/integrations/amazon_msk/), [Lenses](https://docs.lenses.io/install_setup/deployment-options/aws-deployment.html#msk-prometheus-metrics), [New Relic](https://docs.newrelic.com/docs/integrations/amazon-integrations/aws-integrations-list/aws-managed-kafka-msk-integration), and [Sumo logic](https://help.sumologic.com/03Send-Data/Collect-from-Other-Data-Sources/Amazon_MSK_Prometheus_metrics_collection)\. Open monitoring is available for free but charges apply for the transfer of data across Availability Zones\. For information about Prometheus, see the [Prometheus documentation](https://prometheus.io/docs)\.
 
-## Creating an Amazon MSK Cluster with Open Monitoring Enabled<a name="enable-open-monitoring-at-creation"></a>
+## Creating an Amazon MSK cluster with open monitoring enabled<a name="enable-open-monitoring-at-creation"></a>
 
 **Using the AWS Management Console**
 
@@ -20,7 +20,7 @@ You can monitor your MSK cluster with Prometheus, an open\-source monitoring sys
 **Using the API**
 + Invoke the [CreateCluster](https://docs.aws.amazon.com/msk/1.0/apireference/clusters.html#CreateCluster) operation and specify `OpenMonitoring`\. Enable the `jmxExporter`, the `nodeExporter`, or both\. If you specify `OpenMonitoring`, the two exporters can't be disabled at the same time\.
 
-## Enabling Open Monitoring for an Existing Amazon MSK Cluster<a name="enable-open-monitoring-after-creation"></a>
+## Enabling open monitoring for an existing Amazon MSK cluster<a name="enable-open-monitoring-after-creation"></a>
 
 To enable open monitoring, make sure that the cluster is in the `ACTIVE` state\.
 
@@ -28,9 +28,9 @@ To enable open monitoring, make sure that the cluster is in the `ACTIVE` state\.
 
 1. Sign in to the AWS Management Console, and open the Amazon MSK console at [https://console\.aws\.amazon\.com/msk/home?region=us\-east\-1\#/home/](https://console.aws.amazon.com/msk/home?region=us-east-1#/home/)\.
 
-1. Choose the name of the cluster that you want to update\. This takes you to the **Details** page for the cluster\.
+1. Choose the name of the cluster that you want to update\. This takes you to a page the contains details for the cluster\.
 
-1. On the **Details** tab, scroll down to find the **Monitoring** section\.
+1. On the **Properties** tab, scroll down to find the **Monitoring** section\.
 
 1. Choose **Edit**\.
 
@@ -44,7 +44,7 @@ To enable open monitoring, make sure that the cluster is in the `ACTIVE` state\.
 **Using the API**
 + Invoke the [UpdateMonitoring](https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn-monitoring.html#UpdateMonitoring) operation and specify `OpenMonitoring`\. Enable the `jmxExporter`, the `nodeExporter`, or both\. If you specify `OpenMonitoring`, the two exporters can't be disabled at the same time\.
 
-## Setting Up a Prometheus Host on an Amazon EC2 Instance<a name="set-up-prometheus-host"></a>
+## Setting up a Prometheus host on an Amazon EC2 instance<a name="set-up-prometheus-host"></a>
 
 1. Download the Prometheus server from [https://prometheus.io/download/#prometheus](https://prometheus.io/download/#prometheus) to your Amazon EC2 instance\.
 
@@ -117,11 +117,11 @@ To enable open monitoring, make sure that the cluster is in the `ACTIVE` state\.
 
 1. To access the Prometheus web UI, open a browser that can access your Amazon EC2 instance, and go to `Prometheus-Instance-Public-IP:9090`, where *Prometheus\-Instance\-Public\-IP* is the public IP address you got in the previous step\.
 
-## Prometheus Metrics<a name="prometheus-metrics"></a>
+## Prometheus metrics<a name="prometheus-metrics"></a>
 
 All metrics emitted by Apache Kafka to JMX are accessible using open monitoring with Prometheus\. For information about Apache Kafka metrics, see [Monitoring](https://kafka.apache.org/documentation/#monitoring) in the Apache Kafka documentation\. Along with Apache Kafka metrics, consumer\-lag metrics are also available at port 11001 under the JMX MBean name `kafka.consumer.group:type=ConsumerLagMetrics`\. You can also use the Prometheus Node Exporter to get CPU and disk metrics for your brokers at port 11002\.
 
-## Storing Prometheus metrics in Amazon Managed Service for Prometheus<a name="managed-service-prometheus"></a>
+## Storing Prometheus metrics in amazon managed service for Prometheus<a name="managed-service-prometheus"></a>
 
 Amazon Managed Service for Prometheus is a Prometheus\-compatible monitoring and alerting service that you can use to monitor Amazon MSK clusters\. It is a fully\-managed service that automatically scales the ingestion, storage, querying, and alerting of your metrics\. It also integrates with AWS security services to give you fast and secure access to your data\. You can use the open\-source PromQL query language to query your metrics and alert on them\.
 

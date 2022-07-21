@@ -10,18 +10,18 @@ In addition to the client, you also need to grant all your brokers access to you
 
 1. Add your brokers to the ACL table to allow them to read from all topics that have ACLs in place\. To grant your brokers read access to a topic, run the following command on a client machine that can communicate with the MSK cluster\. 
 
-   Replace *ZooKeeper\-Connection\-String* with your Apache ZooKeeper connection string\. For information on how to get this string, see [Getting the Apache ZooKeeper connection string for an Amazon MSK Cluster](msk-get-connection-string.md)\. 
+   Replace *ZooKeeper\-Connection\-String* with your Apache ZooKeeper connection string\. For information on how to get this string, see [Getting the Apache ZooKeeper connection string for an Amazon MSK cluster](msk-get-connection-string.md)\. 
 
-   Replace *Distinguished\-Name* with the DNS of any of your cluster's bootstrap brokers, then replace the string before the first period in this distinguished name by an asterisk \(`*`\)\. For example, if one of your cluster's bootstrap brokers has the DNS `b-6.mytestcluster.67281x.c4.kafka.us-east-1.amazonaws.com`, replace *Distinguished\-Name* in the following command with `*.mytestcluster.67281x.c4.kafka.us-east-1.amazonaws.com`\. For information on how to get the bootstrap brokers, see [Getting the bootstrap brokers for an Amazon MSK Cluster](msk-get-bootstrap-brokers.md)\.
+   Replace *Distinguished\-Name* with the DNS of any of your cluster's bootstrap brokers, then replace the string before the first period in this distinguished name by an asterisk \(`*`\)\. For example, if one of your cluster's bootstrap brokers has the DNS `b-6.mytestcluster.67281x.c4.kafka.us-east-1.amazonaws.com`, replace *Distinguished\-Name* in the following command with `*.mytestcluster.67281x.c4.kafka.us-east-1.amazonaws.com`\. For information on how to get the bootstrap brokers, see [Getting the bootstrap brokers for an Amazon MSK cluster](msk-get-bootstrap-brokers.md)\.
 
    ```
-   bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ZooKeeper-Connection-String --add --allow-principal "User:CN=Distinguished-Name" --operation Read --group=* --topic Topic-Name
+   <path-to-your-kafka-installation>/bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ZooKeeper-Connection-String --add --allow-principal "User:CN=Distinguished-Name" --operation Read --group=* --topic Topic-Name
    ```
 
 1. To grant read access to a topic, run the following command on your client machine\. If you use mutual TLS authentication, use the same *Distinguished\-Name* you used when you created the private key\.
 
    ```
-   bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ZooKeeper-Connection-String --add --allow-principal "User:CN=Distinguished-Name" --operation Read --group=* --topic Topic-Name
+   <path-to-your-kafka-installation>/bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ZooKeeper-Connection-String --add --allow-principal "User:CN=Distinguished-Name" --operation Read --group=* --topic Topic-Name
    ```
 
    To remove read access, you can run the same command, replacing `--add` with `--remove`\.
@@ -29,7 +29,7 @@ In addition to the client, you also need to grant all your brokers access to you
 1. To grant write access to a topic, run the following command on your client machine\. If you use mutual TLS authentication, use the same *Distinguished\-Name* you used when you created the private key\.
 
    ```
-   bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ZooKeeper-Connection-String --add --allow-principal "User:CN=Distinguished-Name" --operation Write --topic Topic-Name
+   <path-to-your-kafka-installation>/bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ZooKeeper-Connection-String --add --allow-principal "User:CN=Distinguished-Name" --operation Write --topic Topic-Name
    ```
 
    To remove write access, you can run the same command, replacing `--add` with `--remove`\.

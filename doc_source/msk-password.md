@@ -1,29 +1,29 @@
 # Username and password authentication with AWS Secrets Manager<a name="msk-password"></a>
 
-You can control access to your Amazon MSK clusters using usernames and passwords that are stored and secured using AWS Secrets Manager\. Storing your users' credentials in Secrets Manager reduces the overhead of cluster authentication, including auditing, updating, and rotating credentials\. Using Secrets Manager also lets you share user credentials across clusters\.
+You can control access to your Amazon MSK clusters using usernames and passwords that are stored and secured using AWS Secrets Manager\. Storing user credentials in Secrets Manager reduces the overhead of cluster authentication such as auditing, updating, and rotating credentials\. Secrets Manager also lets you share user credentials across clusters\.
 
 **Topics**
-+ [How it Works](#msk-password-howitworks)
-+ [Setting up SASL/SCRAM authentication for an Amazon MSK Cluster](#msk-password-tutorial)
-+ [Working with Users](#msk-password-users)
++ [How it works](#msk-password-howitworks)
++ [Setting up SASL/SCRAM authentication for an Amazon MSK cluster](#msk-password-tutorial)
++ [Working with users](#msk-password-users)
 + [Limitations](#msk-password-limitations)
 
-## How it Works<a name="msk-password-howitworks"></a>
+## How it works<a name="msk-password-howitworks"></a>
 
-Username and password authentication for Amazon MSK uses SASL/SCRAM \(Simple Authentication and Security Layer/ Salted Challenge Response Mechanism\) authentication\. To set up username and password authentication for a cluster, you create a Secret resource in [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/?id=docs_gateway), and associate user names and passwords with the secret\. 
+Username and password authentication for Amazon MSK uses SASL/SCRAM \(Simple Authentication and Security Layer/ Salted Challenge Response Mechanism\) authentication\. To set up username and password authentication for a cluster, you create a Secret resource in [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/?id=docs_gateway), and associate user names and passwords with that secret\. 
 
 SASL/SCRAM is defined in [RFC 5802](https://tools.ietf.org/html/rfc5802)\. SCRAM uses secured hashing algorithms, and does not transmit plaintext passwords between client and server\. 
 
 **Note**  
 When you set up SASL/SCRAM authentication for your cluster, Amazon MSK turns on TLS encryption for all traffic between clients and brokers\.
 
-## Setting up SASL/SCRAM authentication for an Amazon MSK Cluster<a name="msk-password-tutorial"></a>
+## Setting up SASL/SCRAM authentication for an Amazon MSK cluster<a name="msk-password-tutorial"></a>
 
 To set up a secret in AWS Secrets Manager, follow the [Creating and Retrieving a Secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/tutorials_basic.html) tutorial in the [AWS Secrets Manager User Guide](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)\.
 
 Note the following requirements when creating a secret for an Amazon MSK cluster:
 + Choose **Other type of secrets \(e\.g\. API key\)** for the secret type\.
-+ Your secret name must have the prefix **AmazonMSK\_**\.
++ Your secret name must begin with the prefix **AmazonMSK\_**\.
 + You must either use an existing custom AWS KMS key or create a new custom AWS KMS key for your secret\. Secrets Manager uses the default AWS KMS key for a secret by default\. 
 **Important**  
 A secret created with the default AWS KMS key cannot be used with an Amazon MSK cluster\.
@@ -57,23 +57,23 @@ When you associate a secret with a cluster, Amazon MSK attaches a resource polic
 
 ### Connecting to your cluster with a username and password<a name="msk-password-tutorial-connect"></a>
 
-After you create your secret and associate it with your cluster, do the following to connect your client to the cluster:
+After you create a secret and associate it with your cluster, you can connect your client to the cluster\. The following example steps demonstrate how to connect a client to a cluster that uses SASL/SCRAM authentication, and how to produce to and consume from an example topic\.
 
-1. Run the following command, replacing *ClusterArn* with the Amazon Resource Name \(ARN\) of your cluster:
+1. Retrieve your cluster details with the following command\. Replace *ClusterArn* with the Amazon Resource Name \(ARN\) of your cluster:
 
    ```
    aws kafka describe-cluster --cluster-arn "ClusterArn"
    ```
 
-   From the JSON result of the command, save the value associated with the string named "ZookeeperConnectString"\.
+   From the JSON result of the command, save the value associated with the string named `ZookeeperConnectString`\.
 
-1. Create a topic in your cluster by running the following command in the `bin` directory in your client machine, replacing *ZookeeperConnectString* with the string you recorded in the previous command\. You can specify a different name for the topic, but if you do, remember to use the name you chose in the rest of this procedure\.
+1. To create an example topic, run the following command on your client machine\. Replace *ZookeeperConnectString* with the string you recorded in the previous step\.
 
    ```
-   ./kafka-topics.sh --create --zookeeper ZookeeperConnectString --replication-factor 3 --partitions 1 --topic ExampleTopicName
+   <path-to-your-kafka-installation>/bin/kafka-topics.sh --create --zookeeper ZookeeperConnectString --replication-factor 3 --partitions 1 --topic ExampleTopicName
    ```
 
-1. On your client machine, create a JAAS configuration file with the user credentials stored in your secret\. For example, for the user **alice**, create a file called `users_jaas.conf` with the following content:
+1. On your client machine, create a JAAS configuration file that contains the user credentials stored in your secret\. For example, for the user **alice**, create a file called `users_jaas.conf` with the following content\.
 
    ```
    KafkaClient {
@@ -83,15 +83,21 @@ After you create your secret and associate it with your cluster, do the followin
    };
    ```
 
-1. Export this JAAS config file as a KAFKA\_OPTS environment parameter with the following command:
+1. Use the following command to export your JAAS config file as a `KAFKA_OPTS` environment parameter\.
 
    ```
    export KAFKA_OPTS=-Djava.security.auth.login.config=<path-to-jaas-file>/users_jaas.conf
    ```
 
-1. Copy the JDK key store file from your JVM `cacerts` folder to a `./tmp` directory\.
+1. Create a file named `kafka.client.truststore.jks` in a `./tmp` directory\.
 
-1. Create a client properties file called `client_sasl.properties` with the following contents\. This file defines the SASL mechanism and protocol\.
+1. Use the following command to copy the JDK key store file from your JVM `cacerts` folder into the `kafka.client.truststore.jks` file that you created in the previous step\. Replace *JDKFolder* with the name of the JDK folder on your instance\. For example, your JDK folder might be named `java-1.8.0-openjdk-1.8.0.201.b09-0.amzn2.x86_64`\.
+
+   ```
+   cp /usr/lib/jvm/JDKFolder/jre/lib/security/cacerts /tmp/kafka.client.truststore.jks
+   ```
+
+1. In the `bin` directory of your Apache Kafka installation, create a client properties file called `client_sasl.properties` with the following contents\. This file defines the SASL mechanism and protocol\.
 
    ```
    security.protocol=SASL_SSL
@@ -99,27 +105,27 @@ After you create your secret and associate it with your cluster, do the followin
    ssl.truststore.location=<path-to-keystore-file>/kafka.client.truststore.jks
    ```
 
-1. Run the following command, replacing *ClusterArn* with the Amazon Resource Name \(ARN\) of your cluster:
+1. Retrieve your bootstrap brokers string with the following command\. Replace *ClusterArn* with the Amazon Resource Name \(ARN\) of your cluster:
 
    ```
    aws kafka get-bootstrap-brokers --cluster-arn ClusterArn
    ```
 
-   From the JSON result of the command, save the value associated with the string named "BootstrapBrokerStringSaslScram"\. 
+   From the JSON result of the command, save the value associated with the string named `BootstrapBrokerStringSaslScram`\. 
 
-1. To produce to the topic you created, run the following command in the `bin` directory in your client machine, replacing *BootstrapBrokerStringSaslScram* with the value that you obtained when you ran the previous command\.
-
-   ```
-   ./kafka-console-producer.sh --broker-list BootstrapBrokerStringSaslScram --topic ExampleTopicName --producer.config client_sasl.properties
-   ```
-
-1. To consume from the topic you created, run the following command in the `bin` directory in your client machine, replacing *BootstrapBrokerStringSaslScram* with the value that you obtained previously\.
+1. To produce to the example topic that you created, run the following command on your client machine\. Replace *BootstrapBrokerStringSaslScram* with the value that you retrieved in the previous step\.
 
    ```
-   ./kafka-console-consumer.sh --bootstrap-server BootstrapBrokerStringSaslScram --topic ExampleTopicName --from-beginning --consumer.config client_sasl.properties
+   <path-to-your-kafka-installation>/bin/kafka-console-producer.sh --broker-list BootstrapBrokerStringSaslScram --topic ExampleTopicName --producer.config client_sasl.properties
    ```
 
-## Working with Users<a name="msk-password-users"></a>
+1. To consume from the topic you created, run the following command on your client machine\. Replace *BootstrapBrokerStringSaslScram* with the value that you obtained previously\.
+
+   ```
+   <path-to-your-kafka-installation>/bin/kafka-console-consumer.sh --bootstrap-server BootstrapBrokerStringSaslScram --topic ExampleTopicName --from-beginning --consumer.config client_sasl.properties
+   ```
+
+## Working with users<a name="msk-password-users"></a>
 
 **Creating users:** You create users in your secret as key\-value pairs\. When you use the **Plaintext** option in the Secrets Manager console, you should specify username and password data in the following format\.
 
@@ -136,7 +142,7 @@ After you create your secret and associate it with your cluster, do the followin
 
 For information about using an ACL with Amazon MSK, see [Apache Kafka ACLs](msk-acls.md)\.
 
-We recommend that you restrict access to your zookeeper nodes to prevent users from modifying ACLs\. For more information, see [Controlling Access to Apache ZooKeeper](zookeeper-security.md)\.
+We recommend that you restrict access to your zookeeper nodes to prevent users from modifying ACLs\. For more information, see [Controlling access to Apache ZooKeeper](zookeeper-security.md)\.
 
 ## Limitations<a name="msk-password-limitations"></a>
 

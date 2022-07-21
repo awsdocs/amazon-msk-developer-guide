@@ -162,7 +162,7 @@ This policy grants read\-only permissions that allow users to view information i
 
 ## AWS managed policy: KafkaServiceRolePolicy<a name="security-iam-awsmanpol-KafkaServiceRolePolicy"></a>
 
-You can't attach KafkaServiceRolePolicy to your IAM entities\. This policy is attached to a service\-linked role that allows Amazon MSK to perform actions on your behalf\. For more information, see [Using Service\-Linked Roles for Amazon MSK](using-service-linked-roles.md)\.
+You can't attach KafkaServiceRolePolicy to your IAM entities\. This policy is attached to a service\-linked role that allows Amazon MSK to perform actions on your behalf\. For more information, see [Using service\-linked roles for Amazon MSK](using-service-linked-roles.md)\.
 
 ```
 {
@@ -203,7 +203,7 @@ You can't attach KafkaServiceRolePolicy to your IAM entities\. This policy is at
 
 ## Amazon MSK updates to AWS managed policies<a name="security-iam-awsmanpol-updates"></a>
 
-View details about updates to AWS managed policies for Amazon MSK since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the Amazon MSK [Document History for Amazon MSK Developer Guide](doc-history.md) page\.
+View details about updates to AWS managed policies for Amazon MSK since this service began tracking these changes\.
 
 
 | Change | Description | Date | 

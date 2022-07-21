@@ -3,12 +3,14 @@
 Amazon Managed Streaming for Apache Kafka \(Amazon MSK\) supports the following Apache Kafka and Amazon MSK versions\.
 
 **Topics**
++ [Apache Kafka version 3\.2\.0](#3.2.0)
++ [Apache Kafka version 3\.1\.1](#3.1.1)
 + [Apache Kafka version 2\.8\.1](#2.8.1)
 + [Apache Kafka version 2\.8\.0](#2.8.0)
 + [Apache Kafka version 2\.7\.2](#2.7.2)
 + [Apache Kafka version 2\.7\.1](#2.7.1)
 + [Apache Kafka version 2\.6\.3](#2.6.3)
-+ [Apache Kafka version 2\.6\.2 \[Recommended\]](#2.6.2)
++ [Apache Kafka version 2\.6\.2 \[recommended\]](#2.6.2)
 + [Apache Kafka version 2\.7\.0](#2.7.0)
 + [Apache Kafka version 2\.6\.1](#2.6.1)
 + [Apache Kafka version 2\.6\.0](#2.6.0)
@@ -18,6 +20,14 @@ Amazon Managed Streaming for Apache Kafka \(Amazon MSK\) supports the following 
 + [Apache Kafka version 2\.3\.1](#2.3.1)
 + [Apache Kafka version 2\.2\.1](#2.2.1)
 + [Apache Kafka version 1\.1\.1 \(for existing clusters only\)](#1.1.1)
+
+## Apache Kafka version 3\.2\.0<a name="3.2.0"></a>
+
+For information about Apache Kafka version 3\.2\.0, see its [release notes](https://downloads.apache.org/kafka/3.2.0/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
+
+## Apache Kafka version 3\.1\.1<a name="3.1.1"></a>
+
+For information about Apache Kafka version 3\.1\.1, see its [release notes](https://downloads.apache.org/kafka/3.1.1/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
 
 ## Apache Kafka version 2\.8\.1<a name="2.8.1"></a>
 
@@ -39,7 +49,7 @@ For information about Apache Kafka version 2\.7\.1, see its [release notes](http
 
 For information about Apache Kafka version 2\.6\.3, see its [release notes](https://archive.apache.org/dist/kafka/2.6.3/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
 
-## Apache Kafka version 2\.6\.2 \[Recommended\]<a name="2.6.2"></a>
+## Apache Kafka version 2\.6\.2 \[recommended\]<a name="2.6.2"></a>
 
 For information about Apache Kafka version 2\.6\.2, see its [release notes](https://archive.apache.org/dist/kafka/2.6.2/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
 
@@ -80,7 +90,7 @@ Amazon MSK clusters running version 2\.4\.1\.1 are compatible with any Apache Ka
 
 We recommend that you use MSK bug\-fix version 2\.4\.1\.1 for new Amazon MSK clusters if you prefer to use Apache Kafka 2\.4\.1\. You can update existing clusters running Apache Kafka version 2\.4\.1 to this version to incorporate this fix\. For information about upgrading an existing cluster, see [Updating the Apache Kafka version](version-upgrades.md)\.
 
-To work around this issue without upgrading the cluster to version 2\.4\.1\.1, see the [Consumer group stuck in `PreparingRebalance` state](troubleshooting.md#consumer-group-rebalance) section of the [Troubleshooting Your Amazon MSK Cluster](troubleshooting.md) guide\. 
+To work around this issue without upgrading the cluster to version 2\.4\.1\.1, see the [Consumer group stuck in `PreparingRebalance` state](troubleshooting.md#consumer-group-rebalance) section of the [Troubleshooting your Amazon MSK cluster](troubleshooting.md) guide\. 
 
 ## Apache Kafka version 2\.4\.1 \(use 2\.4\.1\.1 instead\)<a name="2.4.1"></a>
 
@@ -89,11 +99,11 @@ You can no longer create an MSK cluster with Apache Kafka version 2\.4\.1\. Inst
 
 KIP\-392 is one of the key Kafka Improvement Proposals that are included in the 2\.4\.1 release of Apache Kafka\. This improvement allows consumers to fetch from the closest replica\. To use this feature, set `client.rack` in the consumer properties to the ID of the consumer's Availability Zone\. An example AZ ID is `use1-az1`\. Amazon MSK sets `broker.rack` to the IDs of the Availability Zones of the brokers\. You must also set the `replica.selector.class` configuration property to `org.apache.kafka.common.replica.RackAwareReplicaSelector`, which is an implementation of rack awareness provided by Apache Kafka\. 
 
-When you use this version of Apache Kafka, the metrics in the `PER_TOPIC_PER_BROKER` monitoring level appear only after their values become nonzero for the first time\. For more information about this, see [`PER_TOPIC_PER_BROKER` Level Monitoring](metrics-details.md#broker-topic-metrics)\. 
+When you use this version of Apache Kafka, the metrics in the `PER_TOPIC_PER_BROKER` monitoring level appear only after their values become nonzero for the first time\. For more information about this, see [`PER_TOPIC_PER_BROKER` Level monitoring](metrics-details.md#broker-topic-metrics)\. 
 
 For information about how to find Availability Zone IDs, see [AZ IDs for Your Resource](https://docs.aws.amazon.com/ram/latest/userguide/working-with-az-ids.html) in the AWS Resource Access Manager user guide\. 
 
-For information about setting configuration properties, see [Amazon MSK Configuration](msk-configuration.md)\. 
+For information about setting configuration properties, see [Amazon MSK configuration](msk-configuration.md)\. 
 
 For more information about KIP\-392, see [Allow Consumers to Fetch from Closest Replica](https://cwiki.apache.org/confluence/display/KAFKA/KIP-392:+Allow+consumers+to+fetch+from+closest+replica) in the Confluence pages\.
 

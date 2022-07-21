@@ -1,6 +1,6 @@
 # Automatic scaling<a name="msk-autoexpand"></a>
 
-To automatically expand your cluster's storage in response to increased usage, can can configure an Application Auto\-Scaling policy for Amazon MSK\. In an auto\-scaling policy, you set the target disk utilization and the maximum scaling capacity\.
+To automatically expand your cluster's storage in response to increased usage, you can configure an Application Auto\-Scaling policy for Amazon MSK\. In an auto\-scaling policy, you set the target disk utilization and the maximum scaling capacity\.
 
 Before you use automatic scaling for Amazon MSK, you should consider the following:
 + 
@@ -16,7 +16,7 @@ A storage scaling action can occur only once every six hours\.
 
 An auto\-scaling policy defines the following parameters for your cluster:
 + **Storage Utilization Target**: The storage utilization threshold that Amazon MSK uses to trigger an auto\-scaling operation\. You can set the utilization target between 10% and 80% of the current storage capacity\. We recommend that you set the Storage Utilization Target between 50% and 60%\.
-+ **Maximum Storage Capacity**: The maximum scaling limit that Amazon MSK can set for your broker storage\. You can set the maximum storage capacity up to 16 TiB per broker\. For more information, see [Amazon MSK Quota](limits.md)\.
++ **Maximum Storage Capacity**: The maximum scaling limit that Amazon MSK can set for your broker storage\. You can set the maximum storage capacity up to 16 TiB per broker\. For more information, see [Amazon MSK quota](limits.md)\.
 
 When Amazon MSK detects that your `Maximum Disk Utilization` metric is equal to or greater than the `Storage Utilization Target` setting, it increases your storage capacity by an amount equal to the larger of two numbers: 10 GiB or 10% of current storage\. For example, if you have 1000 GiB, that amount is 100 GiB\. The service checks your storage utilization every minute\. Further scaling operations continue to increase storage by an amount equal to the larger of two numbers: 10 GiB or 10% of current storage\.
 
@@ -33,7 +33,7 @@ You can't implement automatic scaling when you create a cluster\. You must first
 
 1. Sign in to the AWS Management Console, and open the Amazon MSK console at [https://console\.aws\.amazon\.com/msk/home?region=us\-east\-1\#/home/](https://console.aws.amazon.com/msk/home?region=us-east-1#/home/)\.
 
-1. In the list of clusters, choose your cluster\. This takes you to the cluster's **Details** page\.
+1. In the list of clusters, choose your cluster\. This takes you to a page that lists details about the cluster\.
 
 1. In the **Auto scaling for storage** section, choose **Configure**\.
 

@@ -4,7 +4,7 @@ Use this Amazon MSK operation when you want to reboot a broker for your MSK clus
 
 The Amazon MSK service may reboot the brokers for your MSK cluster during system maintenance, such as patching or version upgrades\. Rebooting a broker manually lets you test resilience of your Kafka clients to determine how they respond to system maintenance\. 
 
-## Rebooting a Broker Using the AWS Management Console<a name="msk-reboot-broker-console"></a>
+## Rebooting a broker using the AWS Management Console<a name="msk-reboot-broker-console"></a>
 
 1. Open the Amazon MSK console at [https://console.aws.amazon.com/msk/](https://console.aws.amazon.com/msk/)\.
 
@@ -14,7 +14,7 @@ The Amazon MSK service may reboot the brokers for your MSK cluster during system
 
 1. Choose the **Reboot broker** button\.
 
-## Rebooting a Broker Using the AWS CLI<a name="msk-reboot-broker-cli"></a>
+## Rebooting a broker using the AWS CLI<a name="msk-reboot-broker-cli"></a>
 
 1. Run the following command, replacing *ClusterArn* with the Amazon Resource Name \(ARN\) that you obtained when you created your cluster, and the *BrokerId* with the ID of the broker that you want to reboot\.
 **Note**  
@@ -63,6 +63,6 @@ The `reboot-broker` operation only supports rebooting one broker at a time\.
 
 When the reboot operation is complete, the `OperationState` is `REBOOT_COMPLETE`\.
 
-## Rebooting a Broker Using the API<a name="msk-reboot-broker"></a>
+## Rebooting a broker using the API<a name="msk-reboot-broker"></a>
 
 To reboot a broker in a cluster using the API, see [RebootBroker](https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn-reboot-broker.html#RebootBroker)\.

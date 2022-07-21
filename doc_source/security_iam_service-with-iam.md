@@ -1,15 +1,15 @@
-# How Amazon MSK Works with IAM<a name="security_iam_service-with-iam"></a>
+# How Amazon MSK works with IAM<a name="security_iam_service-with-iam"></a>
 
 Before you use IAM to manage access to Amazon MSK, you should understand what IAM features are available to use with Amazon MSK\. To get a high\-level view of how Amazon MSK and other AWS services work with IAM, see [AWS Services That Work with IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html) in the *IAM User Guide*\.
 
 **Topics**
-+ [Amazon MSK Identity\-Based Policies](#security_iam_service-with-iam-id-based-policies)
-+ [Amazon MSK Resource\-Based Policies](#security_iam_service-with-iam-resource-based-policies)
-+ [AWS Managed Policies](#security_iam_service-with-iam-managed-policies)
-+ [Authorization Based on Amazon MSK Tags](#security_iam_service-with-iam-tags)
-+ [Amazon MSK IAM Roles](#security_iam_service-with-iam-roles)
++ [Amazon MSK identity\-based policies](#security_iam_service-with-iam-id-based-policies)
++ [Amazon MSK resource\-based policies](#security_iam_service-with-iam-resource-based-policies)
++ [AWS managed policies](#security_iam_service-with-iam-managed-policies)
++ [Authorization based on Amazon MSK tags](#security_iam_service-with-iam-tags)
++ [Amazon MSK IAM roles](#security_iam_service-with-iam-roles)
 
-## Amazon MSK Identity\-Based Policies<a name="security_iam_service-with-iam-id-based-policies"></a>
+## Amazon MSK identity\-based policies<a name="security_iam_service-with-iam-id-based-policies"></a>
 
 With IAM identity\-based policies, you can specify allowed or denied actions and resources as well as the conditions under which actions are allowed or denied\. Amazon MSK supports specific actions, resources, and condition keys\. To learn about all of the elements that you use in a JSON policy, see [IAM JSON Policy Elements Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html) in the *IAM User Guide*\.
 
@@ -87,7 +87,7 @@ To specify multiple resources in a single statement, separate the ARNs with comm
 
 To see a list of Amazon MSK resource types and their ARNs, see [Resources Defined by Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonmanagedstreamingforkafka.html#amazonmanagedstreamingforkafka-resources-for-iam-policies) in the *IAM User Guide*\. To learn with which actions you can specify the ARN of each resource, see [Actions Defined by Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonmanagedstreamingforkafka.html#amazonmanagedstreamingforkafka-actions-as-permissions)\.
 
-### Condition Keys<a name="security_iam_service-with-iam-id-based-policies-conditionkeys"></a>
+### Condition keys<a name="security_iam_service-with-iam-id-based-policies-conditionkeys"></a>
 
 Administrators can use AWS JSON policies to specify who has access to what\. That is, which **principal** can perform **actions** on what **resources**, and under what **conditions**\.
 
@@ -109,34 +109,34 @@ To see a list of Amazon MSK condition keys, see [Condition Keys for Amazon Manag
 
 
 
-To view examples of Amazon MSK identity\-based policies, see [Amazon MSK Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md)\.
+To view examples of Amazon MSK identity\-based policies, see [Amazon MSK identity\-based policy examples](security_iam_id-based-policy-examples.md)\.
 
-## Amazon MSK Resource\-Based Policies<a name="security_iam_service-with-iam-resource-based-policies"></a>
+## Amazon MSK resource\-based policies<a name="security_iam_service-with-iam-resource-based-policies"></a>
 
 Amazon MSK does not support resource\-based policies\.
 
-## AWS Managed Policies<a name="security_iam_service-with-iam-managed-policies"></a>
+## AWS managed policies<a name="security_iam_service-with-iam-managed-policies"></a>
 
 
 
-## Authorization Based on Amazon MSK Tags<a name="security_iam_service-with-iam-tags"></a>
+## Authorization based on Amazon MSK tags<a name="security_iam_service-with-iam-tags"></a>
 
-You can attach tags to Amazon MSK clusters\. To control access based on tags, you provide tag information in the [condition element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) of a policy using the `kafka:ResourceTag/key-name`, `aws:RequestTag/key-name`, or `aws:TagKeys` condition keys\. For more information about tagging Amazon MSK resources, see [Tagging an Amazon MSK Cluster](msk-tagging.md)\.
+You can attach tags to Amazon MSK clusters\. To control access based on tags, you provide tag information in the [condition element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) of a policy using the `kafka:ResourceTag/key-name`, `aws:RequestTag/key-name`, or `aws:TagKeys` condition keys\. For more information about tagging Amazon MSK resources, see [Tagging an Amazon MSK cluster](msk-tagging.md)\.
 
-To view an example identity\-based policy for limiting access to a cluster based on the tags on that cluster, see [Accessing Amazon MSK Clusters Based on Tags](security_iam_id-based-policy-examples.md#security_iam_id-based-policy-examples-view-widget-tags)\.
+To view an example identity\-based policy for limiting access to a cluster based on the tags on that cluster, see [Accessing Amazon MSK clusters based on tags](security_iam_id-based-policy-examples.md#security_iam_id-based-policy-examples-view-widget-tags)\.
 
-## Amazon MSK IAM Roles<a name="security_iam_service-with-iam-roles"></a>
+## Amazon MSK IAM roles<a name="security_iam_service-with-iam-roles"></a>
 
 An [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an entity within your Amazon Web Services account that has specific permissions\.
 
-### Using Temporary Credentials with Amazon MSK<a name="security_iam_service-with-iam-roles-tempcreds"></a>
+### Using temporary credentials with Amazon MSK<a name="security_iam_service-with-iam-roles-tempcreds"></a>
 
 You can use temporary credentials to sign in with federation, assume an IAM role, or to assume a cross\-account role\. You obtain temporary security credentials by calling AWS STS API operations such as [AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html) or [GetFederationToken](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetFederationToken.html)\. 
 
 Amazon MSK supports using temporary credentials\. 
 
-### Service\-Linked Roles<a name="security_iam_service-with-iam-roles-service-linked"></a>
+### Service\-linked roles<a name="security_iam_service-with-iam-roles-service-linked"></a>
 
 [Service\-linked roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role) allow Amazon Web Services to access resources in other services to complete an action on your behalf\. Service\-linked roles appear in your IAM account and are owned by the service\. An IAM administrator can view but not edit the permissions for service\-linked roles\.
 
-Amazon MSK supports service\-linked roles\. For details about creating or managing Amazon MSK service\-linked roles, [Using Service\-Linked Roles for Amazon MSK](using-service-linked-roles.md)\.
+Amazon MSK supports service\-linked roles\. For details about creating or managing Amazon MSK service\-linked roles, [Using service\-linked roles for Amazon MSK](using-service-linked-roles.md)\.

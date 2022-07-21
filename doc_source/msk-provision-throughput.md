@@ -29,7 +29,7 @@ You can use the `VolumeReadBytes` and `VolumeWriteBytes` metrics to measure the 
 Average storage throughput in MiB/s = (Sum(VolumeReadBytes) + Sum(VolumeWriteBytes)) / (60 * 1024 * 1024)
 ```
 
-For information about the `VolumeReadBytes` and `VolumeWriteBytes` metrics, see [`PER_BROKER` Level Monitoring](metrics-details.md#broker-metrics)\.
+For information about the `VolumeReadBytes` and `VolumeWriteBytes` metrics, see [`PER_BROKER` Level monitoring](metrics-details.md#broker-metrics)\.
 
 ## Configuration update<a name="provisioned-throughput-config"></a>
 

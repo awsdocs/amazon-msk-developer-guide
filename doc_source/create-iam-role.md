@@ -12,7 +12,7 @@ In this step, you perform two tasks\. The first task is to create an IAM policy 
 
 1. Choose the **JSON** tab, then replace the JSON in the editor window with the following JSON\. 
 
-   Replace *region* with the code of the AWS Region where you created your cluster, and *Account\-ID* with your account ID\.
+   Replace *region* with the code of the AWS Region where you created your cluster\. Replace *Account\-ID* with your account ID\. Replace *msk\-serverless\-tutorial\-cluster* with the name of your serverless cluster\.
 
    ```
    {
@@ -26,7 +26,7 @@ In this step, you perform two tasks\. The first task is to create an IAM policy 
                    "kafka-cluster:DescribeCluster"
                ],
                "Resource": [
-                   "arn:aws:kafka:region:Account-ID:cluster/msk-serverless-tutorial/*"
+                   "arn:aws:kafka:region:Account-ID:cluster/msk-serverless-tutorial-cluster/*"
                ]
            },
            {
@@ -37,7 +37,7 @@ In this step, you perform two tasks\. The first task is to create an IAM policy 
                    "kafka-cluster:ReadData"
                ],
                "Resource": [
-                   "arn:aws:kafka:region:Account-ID:topic/msk-serverless-tutorial/*"
+                   "arn:aws:kafka:region:Account-ID:topic/msk-serverless-tutorial-cluster/*"
                ]
            },
            {
@@ -47,7 +47,7 @@ In this step, you perform two tasks\. The first task is to create an IAM policy 
                    "kafka-cluster:DescribeGroup"
                ],
                "Resource": [
-                   "arn:aws:kafka:region:Account-ID:group/msk-serverless-tutorial/*"
+                   "arn:aws:kafka:region:Account-ID:group/msk-serverless-tutorial-cluster/*"
                ]
            }
        ]
@@ -60,7 +60,7 @@ In this step, you perform two tasks\. The first task is to create an IAM policy 
 
 1. Choose **Next: Review**\.
 
-1. For the policy name, enter `msk-serverless-tutorial`\.
+1. For the policy name, enter a descriptive name, such as **msk\-serverless\-tutorial\-policy**\.
 
 1. Choose **Create policy**\.
 
@@ -72,13 +72,13 @@ In this step, you perform two tasks\. The first task is to create an IAM policy 
 
 1. Under **Common use cases**, choose **EC2**, then choose **Next: Permissions**\.
 
-1. In the search box, enter `msk-serverless-tutorial`, then select the box to the left of the policy\.
+1. In the search box, enter the name of the policy that you previously created for this tutorial\. Then select the box to the left of the policy\.
 
 1. Choose **Next: Tags**\.
 
 1. Choose **Next: Review**\.
 
-1. For the role name, enter `msk-serverless-tutorial`\.
+1. For the role name, enter a descriptive name, such as **msk\-serverless\-tutorial\-role**\.
 
 1. Choose **Create role**\.
 

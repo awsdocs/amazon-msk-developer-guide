@@ -46,7 +46,7 @@ If you enabled server\-side encryption for your S3 bucket using AWS KMS\-managed
 
 If you are creating a new cluster, look for the **Broker log delivery** heading in the **Monitoring** section\. You can specify the destinations to which you want Amazon MSK to deliver your broker logs\. 
 
-For an existing cluster, choose the cluster from your list of clusters, then choose the **Details** tab\. Scroll down to the **Monitoring** section and then choose its **Edit** button\. You can specify the destinations to which you want Amazon MSK to deliver your broker logs\.
+For an existing cluster, choose the cluster from your list of clusters, then choose the **Properties** tab\. Scroll down to the **Log delivery** section and then choose its **Edit** button\. You can specify the destinations to which you want Amazon MSK to deliver your broker logs\.
 
 ### Configuring broker logs using the AWS CLI<a name="broker-logs-cli"></a>
 

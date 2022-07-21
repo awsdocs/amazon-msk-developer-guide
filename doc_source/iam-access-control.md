@@ -7,7 +7,7 @@ Amazon MSK logs access events so you can audit them\. For more information, see 
 To make IAM access control possible, Amazon MSK makes minor modifications to Apache Kafka source code\. These modifications won't cause a noticeable difference in your Apache Kafka experience\.
 
 **Important**  
-IAM access control doesn't apply to Apache ZooKeeper nodes\. For information about how you can control access to those nodes, see [Controlling Access to Apache ZooKeeper](zookeeper-security.md)\.
+IAM access control doesn't apply to Apache ZooKeeper nodes\. For information about how you can control access to those nodes, see [Controlling access to Apache ZooKeeper](zookeeper-security.md)\.
 
 **Important**  
 The `allow.everyone.if.no.acl.found` Apache Kafka setting has no effect if your cluster uses IAM access control\. 
@@ -127,7 +127,7 @@ To learn how to create a policy with action elements that correspond to common A
 
 ### Get the bootstrap brokers for IAM access control<a name="get-bootstrap-brokers-for-iam"></a>
 
-See [Getting the bootstrap brokers for an Amazon MSK Cluster](msk-get-bootstrap-brokers.md)\.
+See [Getting the bootstrap brokers for an Amazon MSK cluster](msk-get-bootstrap-brokers.md)\.
 
 ## Semantics of actions and resources<a name="kafka-actions"></a>
 

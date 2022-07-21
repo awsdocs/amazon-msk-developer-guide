@@ -1,9 +1,9 @@
-# Custom MSK Configurations<a name="msk-configuration-properties"></a>
+# Custom MSK configurations<a name="msk-configuration-properties"></a>
 
-Amazon MSK enables you to create a custom MSK configuration where you set the following properties\. Properties that you don't set explicitly get the values they have in [The Default Amazon MSK Configuration](msk-default-configuration.md)\. For more information about configuration properties, see [Apache Kafka Configuration](https://kafka.apache.org/documentation/#configuration)\.
+Amazon MSK enables you to create a custom MSK configuration where you set the following properties\. Properties that you don't set explicitly get the values they have in [The default Amazon MSK configuration](msk-default-configuration.md)\. For more information about configuration properties, see [Apache Kafka Configuration](https://kafka.apache.org/documentation/#configuration)\.
 
 
-**Apache Kafka Configuration Properties That You Can Set**  
+**Apache Kafka configuration properties that you can set**  
 
 | Name | Description | 
 | --- | --- | 
@@ -56,22 +56,22 @@ Amazon MSK enables you to create a custom MSK configuration where you set the fo
 | zookeeper\.connection\.timeout\.ms | Maximum time that the client waits to establish a connection to ZooKeeper\. If not set, the value in zookeeper\.session\.timeout\.ms is used\. | 
 | zookeeper\.session\.timeout\.ms |  The Apache ZooKeeper session timeout in milliseconds\. MinValue = 6000 MaxValue \(inclusive\) = 18000  | 
 
-To learn how you can create a custom MSK configuration, list all configurations, or describe them, see [Amazon MSK Configuration Operations](msk-configuration-operations.md)\. To create an MSK cluster using a custom MSK configuration or to update a cluster with a new custom configuration, see [Amazon MSK: How It Works](operations.md)\.
+To learn how you can create a custom MSK configuration, list all configurations, or describe them, see [Amazon MSK configuration operations](msk-configuration-operations.md)\. To create an MSK cluster using a custom MSK configuration or to update a cluster with a new custom configuration, see [Amazon MSK: How it works](operations.md)\.
 
 When you update your existing MSK cluster with a custom MSK configuration, Amazon MSK does rolling restarts when necessary, using best practices to minimize customer downtime\. For example, after Amazon MSK restarts each broker, it tries to let the broker catch up on data that the broker might have missed during the configuration update before it moves to the next broker\.
 
-## Dynamic Configuration<a name="msk-dynamic-confinguration"></a>
+## Dynamic configuration<a name="msk-dynamic-confinguration"></a>
 
-In addition to the configuration properties that Amazon MSK provides, you can dynamically set cluster\- and broker\-level configuration properties that don’t require a broker restart\. You can dynamically set configuration properties that aren't marked as read\-only in the table under [Broker Configs](https://kafka.apache.org/documentation/#brokerconfigs) in the Apache Kafka documentation\. For information about dynamic configuration and example commands, see [Updating Broker Configs](https://kafka.apache.org/documentation/#dynamicbrokerconfigs) in the Apache Kafka documentation\.
+In addition to the configuration properties that Amazon MSK provides, you can dynamically set cluster\- and broker\-level configuration properties that don't require a broker restart\. You can dynamically set configuration properties that aren't marked as read\-only in the table under [Broker Configs](https://kafka.apache.org/documentation/#brokerconfigs) in the Apache Kafka documentation\. For information about dynamic configuration and example commands, see [Updating Broker Configs](https://kafka.apache.org/documentation/#dynamicbrokerconfigs) in the Apache Kafka documentation\.
 
 **Note**  
 You can set the `advertised.listeners` property, but not the `listeners` property\.
 
-## Topic\-Level Configuration<a name="msk-topic-confinguration"></a>
+## Topic\-level configuration<a name="msk-topic-confinguration"></a>
 
 You can use Apache Kafka commands to set or modify topic\-level configuration properties for new and existing topics\. For more information about topic\-level configuration properties and examples on how to set them, see [Topic\-Level Configs](https://kafka.apache.org/documentation/#topicconfigs) in the Apache Kafka documentation\.
 
-## Configuration States<a name="msk-configuration-states"></a>
+## Configuration states<a name="msk-configuration-states"></a>
 
 Amazon MSK configurations can be in the following states\. To perform an operation on a configuration, the configuration must be in the `ACTIVE` or `DELETE_FAILED` state:
 + `ACTIVE`

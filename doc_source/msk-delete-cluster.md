@@ -1,4 +1,4 @@
-# Deleting an Amazon MSK Cluster<a name="msk-delete-cluster"></a>
+# Deleting an Amazon MSK cluster<a name="msk-delete-cluster"></a>
 
 **Note**  
 If your cluster has an auto\-scaling policy, we recommend that you remove the policy before you delete the cluster\. For more information, see [Automatic scaling](msk-autoexpand.md)\.

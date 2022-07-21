@@ -19,7 +19,7 @@
    ```
    connector.class=io.lenses.streamreactor.connect.aws.s3.sink.S3SinkConnector
    key.converter.schemas.enable=false
-   connect.s3.kcql=INSERT INTO mkc-tutorial-destination-bucket:tutorial SELECT * FROM mkc-tutorial-topic
+   connect.s3.kcql=INSERT INTO <my-tutorial-destination-bucket>:tutorial SELECT * FROM mkc-tutorial-topic WITH_FLUSH_COUNT = 1
    aws.region=us-east-1
    tasks.max=2
    topics=mkc-tutorial-topic

@@ -1,14 +1,14 @@
-# Tagging an Amazon MSK Cluster<a name="msk-tagging"></a>
+# Tagging an Amazon MSK cluster<a name="msk-tagging"></a>
 
 You can assign your own metadata in the form of *tags* to an Amazon MSK resource, such as an MSK cluster\. A tag is a key\-value pair that you define for the resource\. Using tags is a simple yet powerful way to manage AWS resources and organize data, including billing data\. 
 
 **Topics**
-+ [Tag Basics](#msk-tagging-basics)
-+ [Tracking Costs Using Tagging](#msk-tagging-billing)
-+ [Tag Restrictions](#msk-tagging-restrictions)
-+ [Tagging Resources Using the Amazon MSK API](#msk-tagging-howto)
++ [Tag basics](#msk-tagging-basics)
++ [Tracking costs using tagging](#msk-tagging-billing)
++ [Tag restrictions](#msk-tagging-restrictions)
++ [Tagging resources using the Amazon MSK API](#msk-tagging-howto)
 
-## Tag Basics<a name="msk-tagging-basics"></a>
+## Tag basics<a name="msk-tagging-basics"></a>
 
 You can use the Amazon MSK API to complete the following tasks:
 + Add tags to an Amazon MSK resource\.
@@ -23,11 +23,11 @@ The following are several examples of tags:
 + `Purpose: Load testing` 
 + `Environment: Production` 
 
-## Tracking Costs Using Tagging<a name="msk-tagging-billing"></a>
+## Tracking costs using tagging<a name="msk-tagging-billing"></a>
 
 You can use tags to categorize and track your AWS costs\. When you apply tags to your AWS resources, including Amazon MSK clusters, your AWS cost allocation report includes usage and costs aggregated by tags\. You can organize your costs across multiple services by applying tags that represent business categories \(such as cost centers, application names, or owners\)\. For more information, see [Use Cost Allocation Tags for Custom Billing Reports](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing User Guide*\.
 
-## Tag Restrictions<a name="msk-tagging-restrictions"></a>
+## Tag restrictions<a name="msk-tagging-restrictions"></a>
 
 The following restrictions apply to tags in Amazon MSK\.
 
@@ -46,7 +46,7 @@ The following restrictions apply to tags in Amazon MSK\.
 + Tag values must be between 0 and 255 Unicode characters in length\.
 + Tag values can be blank\. Otherwise, they must consist of the following characters: Unicode letters, digits, white space, and any of the following special characters: `_ . / = + - @`\.
 
-## Tagging Resources Using the Amazon MSK API<a name="msk-tagging-howto"></a>
+## Tagging resources using the Amazon MSK API<a name="msk-tagging-howto"></a>
 
 You can use the following operations to tag or untag an Amazon MSK resource or to list the current set of tags for a resource:
 + [ListTagsForResource](https://docs.aws.amazon.com//msk/1.0/apireference/tags-resourcearn.html#ListTagsForResource)

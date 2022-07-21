@@ -13,7 +13,7 @@ You can't update the Apache Kafka version for an MSK cluster that exceeds the li
 
 1. Choose the MSK cluster on which you want to update the Apache Kafka version\.
 
-1. On the **Details** tab choose **Upgrade the Apache Kafka version**\.
+1. On the **Properties** tab choose **Upgrade** in the **Apache Kafka version** section\.
 
 **Updating the Apache Kafka version using the AWS CLI**
 

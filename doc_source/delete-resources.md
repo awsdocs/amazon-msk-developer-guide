@@ -6,7 +6,7 @@ In this step, you delete the resources that you created in this tutorial\.
 
 1. Open the Amazon MSK console at [https://console\.aws\.amazon\.com/msk/home](https://console.aws.amazon.com/msk/home)\.
 
-1. In the list of clusters, choose `msk-serverless-tutorial`\.
+1. In the list of clusters, choose the cluster that you created for this tutorial\.
 
 1. For **Actions**, choose **Delete cluster**\.
 
@@ -16,7 +16,7 @@ In this step, you delete the resources that you created in this tutorial\.
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the list of Amazon EC2 instances, choose the client machine, which is the instance named **msk\-serverless\-tutorial**\.
+1. In the list of Amazon EC2 instances, choose the client machine that you created for this tutorial\.
 
 1. Choose **Instance state**, then choose **Terminate instance**\.
 
@@ -28,20 +28,14 @@ In this step, you delete the resources that you created in this tutorial\.
 
 1. On the navigation pane, choose **Roles**\.
 
-1. In the search box, enter `msk-serverless-tutorial`\.
+1. In the search box, enter the name of the IAM role that you created for this tutorial\.
 
-1. Choose the **msk\-serverless\-tutorial** role\.
-
-1. Choose **Delete role**\.
-
-1. Choose **Yes, delete**\.
+1. Choose the role\. Then choose **Delete role**, and confirm the deletion\.
 
 1. On the navigation pane, choose **Policies**\.
 
-1. In the search box, enter `msk-serverless-tutorial` followed by a return\.
+1. In the search box, enter the name of the policy that you created for this tutorial\.
 
-1. Choose the **msk\-serverless\-tutorial** policy\.
-
-1. On the policy's **Summary** page, choose **Delete policy**\.
+1. Choose the policy to open its summary page\. On the policy's **Summary** page, choose **Delete policy**\.
 
 1. Choose **Delete**\.

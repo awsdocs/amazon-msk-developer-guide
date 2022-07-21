@@ -1,11 +1,11 @@
-# The Default Amazon MSK Configuration<a name="msk-default-configuration"></a>
+# The default Amazon MSK configuration<a name="msk-default-configuration"></a>
 
 When you create an MSK cluster without specifying a custom MSK configuration, Amazon MSK creates and uses a default configuration with the values shown in the following table\. For properties that aren't in this table, Amazon MSK uses the defaults associated with your version of Apache Kafka\. For a list of these default values, see [Apache Kafka Configuration](https://kafka.apache.org/documentation/#configuration)\. 
 
 
-**Default Configuration Values**  
+**Default configuration values**  
 
-| Name | Description | Default Value | 
+| Name | Description | Default value | 
 | --- | --- | --- | 
 | allow\.everyone\.if\.no\.acl\.found | If no resource patterns match a specific resource, the resource has no associated ACLs\. In this case, if this property is set to true, everyone is allowed to access the resource, not just the super users\. | true | 
 | auto\.create\.topics\.enable | Enables autocreation of a topic on the server\. | false | 
@@ -24,4 +24,4 @@ When you create an MSK cluster without specifying a custom MSK configuration, Am
 | zookeeper\.session\.timeout\.ms |  The Apache ZooKeeper session timeout in milliseconds\.  | 18000 | 
 | zookeeper\.set\.acl | Set client to use secure ACLs\. | false | 
 
-For information about how to specify custom configuration values, see [Custom MSK Configurations](msk-configuration-properties.md)\.
+For information about how to specify custom configuration values, see [Custom MSK configurations](msk-configuration-properties.md)\.

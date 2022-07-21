@@ -2,7 +2,7 @@
 
 To connect to an MSK cluster from inside AWS but outside the cluster's Amazon VPC, the following options exist\.
 
-## Amazon VPC Peering<a name="vpc-peering"></a>
+## Amazon VPC peering<a name="vpc-peering"></a>
 
 To connect to your MSK cluster from a VPC that's different from the cluster's VPC, you can create a peering connection between the two VPCs\. For information about VPC peering, see the [Amazon VPC Peering Guide](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html)\.
 
@@ -14,15 +14,15 @@ AWS Direct Connect links your on\-premise network to AWS over a standard 1 gigab
 
 AWS Transit Gateway is a service that enables you to connect your VPCs and your on\-premises networks to a single gateway\. For information about how to use AWS Transit Gateway, see [AWS Transit Gateway](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html)\.
 
-## VPN Connections<a name="vpn-connections"></a>
+## VPN connections<a name="vpn-connections"></a>
 
 You can connect your MSK cluster's VPC to remote networks and users using the VPN connectivity options described in the following topic: [VPN Connections](https://docs.aws.amazon.com/vpc/latest/userguide/vpn-connections.html)\.
 
-## REST Proxies<a name="rest-proxies"></a>
+## REST proxies<a name="rest-proxies"></a>
 
 You can install a REST proxy on an instance running within your cluster's Amazon VPC\. REST proxies enable your producers and consumers to communicate with the cluster through HTTP API requests\.
 
-## Multiple Region Multi\-VPC Connectivity<a name="multi-vpc-multi-region"></a>
+## Multiple Region multi\-VPC connectivity<a name="multi-vpc-multi-region"></a>
 
 The following document describes connectivity options for multiple VPCs that reside in different Regions: [Multiple Region Multi\-VPC Connectivity](https://aws.amazon.com/answers/networking/aws-multiple-region-multi-vpc-connectivity/)\.
 

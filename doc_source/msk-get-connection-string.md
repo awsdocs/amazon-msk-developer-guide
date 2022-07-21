@@ -1,4 +1,4 @@
-# Getting the Apache ZooKeeper connection string for an Amazon MSK Cluster<a name="msk-get-connection-string"></a>
+# Getting the Apache ZooKeeper connection string for an Amazon MSK cluster<a name="msk-get-connection-string"></a>
 
 ## Getting the Apache ZooKeeper connection string using the AWS Management Console<a name="get-connection-string-console"></a>
 

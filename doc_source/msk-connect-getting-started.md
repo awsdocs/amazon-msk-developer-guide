@@ -1,4 +1,4 @@
-# Getting Started Using MSK Connect<a name="msk-connect-getting-started"></a>
+# Getting started using MSK Connect<a name="msk-connect-getting-started"></a>
 
 This is a step\-by\-step tutorial that uses the AWS Management Console to create an MSK cluster and a sink connector that sends data from the cluster to an S3 bucket\.
 
