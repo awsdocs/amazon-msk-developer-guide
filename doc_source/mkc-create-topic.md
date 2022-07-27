@@ -79,7 +79,7 @@ If you want to use a mirror site other than the one used in this command, you ca
 1. Run the following command on the client instance \(`mkc-tutorial-client`\), replacing *bootstrapServerString* with the value that you saved when you viewed the cluster's client information\.
 
    ```
-   <path-to-your-kafka-installation>/bin/kafka-topics.sh --create --bootrstrap-server bootstrapServerString --replication-factor 2 --partitions 1 --topic mkc-tutorial-topic
+   <path-to-your-kafka-installation>/bin/kafka-topics.sh --create --bootstrap-server bootstrapServerString --replication-factor 2 --partitions 1 --topic mkc-tutorial-topic
    ```
 
    If the command succeeds, you see the following message: Created topic mkc\-tutorial\-topic\.
