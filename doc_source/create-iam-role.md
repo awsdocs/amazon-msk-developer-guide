@@ -12,7 +12,7 @@ In this step, you perform two tasks\. The first task is to create an IAM policy 
 
 1. Choose the **JSON** tab, then replace the JSON in the editor window with the following JSON\. 
 
-   Replace *region* with the code of the AWS Region where you created your cluster\. Replace *Account\-ID* with your account IDReplace *msk\-serverless\-tutorial\-cluster* with the name of your serverless cluster\.
+   Replace *region* with the code of the AWS Region where you created your cluster\. Replace *Account\-ID* with your account ID\. Replace *msk\-serverless\-tutorial\-cluster* with the name of your serverless cluster\.
 
    ```
    {
@@ -72,7 +72,7 @@ In this step, you perform two tasks\. The first task is to create an IAM policy 
 
 1. Under **Common use cases**, choose **EC2**, then choose **Next: Permissions**\.
 
-1. In the search box, enter the name of the policy that you previously created for this tutorialThen select the box to the left of the policy\.
+1. In the search box, enter the name of the policy that you previously created for this tutorial\. Then select the box to the left of the policy\.
 
 1. Choose **Next: Tags**\.
 
