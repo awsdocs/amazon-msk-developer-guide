@@ -23,15 +23,15 @@ Amazon Managed Streaming for Apache Kafka \(Amazon MSK\) supports the following 
 
 ## Apache Kafka version 3\.2\.0<a name="3.2.0"></a>
 
-For information about Apache Kafka version 3\.2\.0, see its [release notes](https://downloads.apache.org/kafka/3.2.0/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
+For information about Apache Kafka version 3\.2\.0, see its [release notes](https://archive.apache.org/dist/kafka/3.2.0/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
 
 ## Apache Kafka version 3\.1\.1<a name="3.1.1"></a>
 
-For information about Apache Kafka version 3\.1\.1, see its [release notes](https://downloads.apache.org/kafka/3.1.1/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
+For information about Apache Kafka version 3\.1\.1, see its [release notes](https://archive.apache.org/dist/kafka/3.1.1/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
 
 ## Apache Kafka version 2\.8\.1<a name="2.8.1"></a>
 
-For information about Apache Kafka version 2\.8\.1, see its [release notes](https://downloads.apache.org/kafka/2.8.1/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
+For information about Apache Kafka version 2\.8\.1, see its [release notes](https://archive.apache.org/dist/kafka/2.8.1/RELEASE_NOTES.html) on the Apache Kafka downloads site\.
 
 ## Apache Kafka version 2\.8\.0<a name="2.8.0"></a>
 
