@@ -33,6 +33,7 @@ If you want to use a mirror site other than the one used in this command, you ca
 1. Go to the **kafka\_2\.12\-2\.6\.2** directory\.
 
 1. Open the Amazon MSK console at [https://console.aws.amazon.com/msk/](https://console.aws.amazon.com/msk/)\.
+2. Click on Clusters and create a new Cluster with Serverless Cluster Type and everything else remains default.
 
 1. Wait for the status of your cluster to become **Active**\. This might take several minutes\. After the status becomes **Active**, choose the cluster name\. This takes you to a page containing the cluster summary\.
 
