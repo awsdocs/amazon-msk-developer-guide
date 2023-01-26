@@ -1,16 +1,10 @@
-# Step 4: Produce and consume data<a name="produce-consume"></a>
+# Step 5: Produce and consume data<a name="produce-consume"></a>
 
 In this step of [Getting Started Using Amazon MSK](getting-started.md), you produce and consume data\.
 
 **To produce and consume messages**
 
-1. Go to the `bin` folder of the Apache Kafka installation on the client machine, and create a text file named `client.properties` with the following contents\.
-
-   ```
-   security.protocol=PLAINTEXT
-   ```
-
-1. Run the following command to start a console producer\. Replace *BootstrapServerString* with the plaintext connection string that you obtained in [Step 3: Create a topic](create-topic.md)\. For instructions on how to retrieve this connection string, see [Getting the bootstrap brokers for an Amazon MSK cluster](msk-get-bootstrap-brokers.md)\.
+1. Run the following command to start a console producer\. Replace *BootstrapServerString* with the plaintext connection string that you obtained in [Step 4: Create a topic](create-topic.md)\. For instructions on how to retrieve this connection string, see [Getting the bootstrap brokers for an Amazon MSK cluster](msk-get-bootstrap-brokers.md)\.
 
    ```
    <path-to-your-kafka-installation>/bin/kafka-console-producer.sh --broker-list BootstrapServerString --producer.config client.properties --topic MSKTutorialTopic
@@ -32,4 +26,4 @@ In this step of [Getting Started Using Amazon MSK](getting-started.md), you prod
 
 **Next Step**
 
-[Step 5: Use Amazon CloudWatch to view Amazon MSK metrics](view-metrics.md)
+[Step 6: Use Amazon CloudWatch to view Amazon MSK metrics](view-metrics.md)

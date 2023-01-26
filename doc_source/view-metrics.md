@@ -1,4 +1,4 @@
-# Step 5: Use Amazon CloudWatch to view Amazon MSK metrics<a name="view-metrics"></a>
+# Step 6: Use Amazon CloudWatch to view Amazon MSK metrics<a name="view-metrics"></a>
 
 In this step of [Getting Started Using Amazon MSK](getting-started.md), you look at the Amazon MSK metrics in Amazon CloudWatch\.
 
@@ -16,4 +16,4 @@ In this step of [Getting Started Using Amazon MSK](getting-started.md), you look
 
 **Next Step**
 
-[Step 6: Delete the AWS resources created for this tutorial](delete-cluster.md)
+[Step 7: Delete the AWS resources created for this tutorial](delete-cluster.md)
