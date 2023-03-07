@@ -17,7 +17,7 @@ The following example shows how you can use the `aws:SourceArn` and `aws:SourceA
     {
       "Effect": "Allow",
       "Principal": {
-        "Service": " kafkaconnect.amazonaws.com"
+        "Service": "kafkaconnect.amazonaws.com"
       },
       "Action": "sts:AssumeRole",
       "Condition": {
