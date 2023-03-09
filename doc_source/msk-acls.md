@@ -6,7 +6,18 @@ Apache Kafka ACLs have the format "Principal P is \[Allowed/Denied\] Operation O
 
 In addition to the client, you also need to grant all your brokers access to your topics so that the brokers can replicate messages from the primary partition\. If the brokers don't have access to a topic, replication for the topic fails\.
 
-**To add or remove read and write access to a topic**
+## Mapping Rules
+
+Kafka uses `mapping rules` to translate certificate subject names (principals) into short names so users can be identifiyied univocally.
+Typically, a client will authenticate against `kafka` with [TLS providing a certificate](https://github.com/marcosschroh/amazon-msk-developer-guide/blob/main/doc_source/msk-authentication.md) providing a certificate which contains a `Distinguished Name`, for example `cn=alice,cn=groups,cn=accounts,dc=hadoopsecurity,dc=local`.
+
+Working with these long names is difficult, so `MSK` is configured with a mapping rule `RULE:^.*[Cc][Nn]=([a-zA-Z0-9._-]*).*$$/CN=$$1/,DEFAULT` to work with the client's short name (alice) rather than the full `Distinguished Name`.
+
+The rule acts in the following: The regular expression `^.*[Cc][Nn]=([a-zA-Z0-9._-]*).*$$` matches any subject that starts with `CN=`, `cn=`, `Cn=`, or `cN=`, followed by the user's short name that contains characters ranging between `a-z,A-Z` and `0-9`, followed by any string. It then replaces the matched string with `CN=<user's short name>` (in this case `CN=alice`)
+
+Then, when `ACLs` are created they *MUST* contains the string `CN=<user's short name>`.
+
+## Add or remove read and write access to a topic
 
 1. Add your brokers to the ACL table to allow them to read from all topics that have ACLs in place\. To grant your brokers read access to a topic, run the following command on a client machine that can communicate with the MSK cluster\. 
 
@@ -18,7 +29,7 @@ In addition to the client, you also need to grant all your brokers access to you
    <path-to-your-kafka-installation>/bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ZooKeeper-Connection-String --add --allow-principal "User:CN=Distinguished-Name" --operation Read --group=* --topic Topic-Name
    ```
 
-1. To grant read access to a topic, run the following command on your client machine\. If you use mutual TLS authentication, use the same *Distinguished\-Name* you used when you created the private key\.
+2. To grant read access to a topic, run the following command on your client machine\. If you use mutual TLS authentication, use the same *Distinguished\-Name* you used when you created the private key\.
 
    ```
    <path-to-your-kafka-installation>/bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ZooKeeper-Connection-String --add --allow-principal "User:CN=Distinguished-Name" --operation Read --group=* --topic Topic-Name
@@ -26,7 +37,7 @@ In addition to the client, you also need to grant all your brokers access to you
 
    To remove read access, you can run the same command, replacing `--add` with `--remove`\.
 
-1. To grant write access to a topic, run the following command on your client machine\. If you use mutual TLS authentication, use the same *Distinguished\-Name* you used when you created the private key\.
+3. To grant write access to a topic, run the following command on your client machine\. If you use mutual TLS authentication, use the same *Distinguished\-Name* you used when you created the private key\.
 
    ```
    <path-to-your-kafka-installation>/bin/kafka-acls.sh --authorizer-properties zookeeper.connect=ZooKeeper-Connection-String --add --allow-principal "User:CN=Distinguished-Name" --operation Write --topic Topic-Name
