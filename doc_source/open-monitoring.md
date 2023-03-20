@@ -121,7 +121,7 @@ To enable open monitoring, make sure that the cluster is in the `ACTIVE` state\.
 
 All metrics emitted by Apache Kafka to JMX are accessible using open monitoring with Prometheus\. For information about Apache Kafka metrics, see [Monitoring](https://kafka.apache.org/documentation/#monitoring) in the Apache Kafka documentation\. Along with Apache Kafka metrics, consumer\-lag metrics are also available at port 11001 under the JMX MBean name `kafka.consumer.group:type=ConsumerLagMetrics`\. You can also use the Prometheus Node Exporter to get CPU and disk metrics for your brokers at port 11002\.
 
-## Storing Prometheus metrics in amazon managed service for Prometheus<a name="managed-service-prometheus"></a>
+## Storing Prometheus metrics in Amazon Managed Service for Prometheus<a name="managed-service-prometheus"></a>
 
 Amazon Managed Service for Prometheus is a Prometheus\-compatible monitoring and alerting service that you can use to monitor Amazon MSK clusters\. It is a fully\-managed service that automatically scales the ingestion, storage, querying, and alerting of your metrics\. It also integrates with AWS security services to give you fast and secure access to your data\. You can use the open\-source PromQL query language to query your metrics and alert on them\.
 
